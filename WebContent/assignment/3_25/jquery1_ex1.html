@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Jquery1_ex</title>
+	<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		var button = $("<button type='button' onclick='imgAdd()'>클릭</button><br><br>")
+		button.appendTo("body");
+	})
+	
+	function imgAdd(){
+		var img = $("<img>", {
+			"alt" : "IU"
+			,"src" : "IU.jpg"
+			,"height" : "300"
+			,"width" : "300"
+			,"click" : function(){
+				$(img).css("border", "2px solid red");
+			}
+		});
+		img.appendTo("body");
+	}
+	</script>
+</head>
+<body>
+	<h1>Jquery 문제</h1>
+	
+</body>
+</html>
