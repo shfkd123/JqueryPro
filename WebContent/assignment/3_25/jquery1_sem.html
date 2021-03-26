@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+			
+		//onload 이벤트 - 화면이 준비가 되면 호출되는 함수
+//		$("body").load();		
+		
+		$(document).ready(function{
+			alert("준비완료");
+		});
+		
+		$(function{
+			alert("준비완료");
+		}); //(document).ready 사용한 것과 똑같은 효과
+	</script>
+</head>
+<body>
+	<button type="button" onclick="addImg()">이미지 추가</button>
+</body>
+</html>

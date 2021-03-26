@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+	<p><strong>아빠상어</strong>뚜루루뚜루</p>
+	<p>엄마상어 뚜루루뚜루</p>
+	<p>아기상어 뚜루루뚜루</p>
+	<p>할머니상어 뚜루루뚜루</p>
+	<hr>
+	<button type="button" onclick="getHTML()">html()</button>
+	<button type="button" onclick="getTEXT()">text()</button>
+	<button type="button" onclick="testRepeat()">반복문테스트</button>
+	<div id="result">
+	</div>
+</body>
+<script>
+function testRepeat() {
+/* 	var objs = $("p");
+	//case1) 일반 for문 사용
+	for(var i=0; i<objs.length; i++){
+		alert(i+1 + "번째 : " + $(objs[i]).html());
+	} */
+	
+	//case2) jquery each문 사용 - selector 이용
+	/* $("p").each(function(){
+		console.log(this); // ==> objs[i] / <p>
+		alert($(this).html());
+	}); */
+
+	/* 	$("p").each(function(idx, obj){
+		console.log(idx + "/" + obj);
+		alert($(obj).html());
+	}); */
+	
+	//case3) jquery each문 사용 - object 이용
+	var arr = ["현대", "기아", "쉐보레"]; //<==서버로 결과를 받은 list인 경우 이런식으로 사용하기도 함. 
+	$.each(arr, function(idx, obj){
+		//arr[idx] ==> obj
+		console.log(obj);
+//		console.log(this);
+	});
+}
+function getHTML(){ //html은 태그까지 다 가져온다.p태그가 여러개인 경우 첫번째 내용만 가져온다.
+	var result = $("p").html(); //get메소드 역할
+	$("#result").html(result); //set메소드 역할
+	
+	//js방법 : document.getElementById("result").innerHTML = result; 
+	
+}
+function getTEXT(){ //p태그 전부 다 출력
+	var result = $("p").text(); //get메소드 역할
+	$("#result").html(result); //set메소드 역할
+}
+</script>
+</html>
