@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	//onmouseover : 마우스를 요소 위에 올렸을 경우
+	//onmouseout : 마우스 요소 위에 있다가 벗어난 경우 
+		function setBorder(ele) {
+			ele.style.border = "2px solid red";
+		}
+		
+		function removeBorder(ele) {
+			ele.style.border = "none";
+		}
+	</script>
+</head>
+<body>
+	<div style="background-color: yellow;" width: 200px;" 
+	onmouseover="setBorder(this)" onmouseout="removeBorder(this)">마우스를 이 요소 위로 이동하세요
+	</div>
+</body>
+</html>

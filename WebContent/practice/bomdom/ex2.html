@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML 요소 찾기</title>
+	<script type="text/javascript">
+		function process(){
+			//요소 속성 중 id로 찾기 
+			var obj = document.getElementById("target");
+			alert(obj);
+			alert(obj.value);	
+		}
+	</script>
+</head>
+<body>
+	<form name="myform">
+		<input type="text" id="target" name="name">
+		<input type="submit" value="제출" onclick="process()">
+	</form>
+</body>
+</html>

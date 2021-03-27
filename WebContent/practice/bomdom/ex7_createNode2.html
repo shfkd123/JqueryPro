@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>요소 생성 예제2</title>
+	<script type="text/javascript">
+		function addImg(obj, fileName) {
+			//document.getElementsByTagName() 태그 이름으로 요소 찾기
+			var arrImgs = document.getElementsByTagName("img");
+			
+			 for (var i = 0; i < arrImgs.length; i++) {
+				arrImgs[i].remove(); //<li>
+			} 
+			
+			var objImg = document.createElement("img");
+			objImg.src = "../../images/" + fileName;
+			objImg.height = "30";
+		
+			obj.appendChild(objImg);
+		}
+	</script>
+</head>
+<body>
+	<ul>
+	<!-- this는 li -->
+		<li id="img1" onclick="addImg(this, 'coffee.jpg')">컴퓨터</li>
+		<li id="img2" onclick="addImg(this, 'coffee.jpg')">식품</li>
+		<li id="img3" onclick="addImg(this, 'coffee.jpg')">호랑이</li>
+		<li id="img4" onclick="addImg(this, 'coffee.jpg')">구름</li>
+		<li id="img5" onclick="addImg(this, 'coffee.jpg')">커피</li>
+	</ul>
+	
+</body>
+</html>

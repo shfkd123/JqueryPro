@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		function get() {
+			var val = document.getElementById("ex").innerHTML;
+			alert(val);
+		}
+		
+		function set(para) {
+			document.getElementById("ex").innerHTML = para;
+		}
+	</script>
+</head>
+<body>
+	<div id="ex">무궁화 꽃이 피었습니다.</div>
+	<a href="#" onclick="get()">내용 가져오기</a>
+	<br>
+	<a href="#" onclick="set('장미꽃이 피었습니다.')">내용 변경하기</a>
+</body>
+</html>

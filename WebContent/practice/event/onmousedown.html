@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	//onmousedown - 사용자가 마우스버튼 누를 때 실행.
+	//onmouseup - 사용자가 마우스버튼 올릴 때 (= 누른 걸 뗄 때) 실행.
+		function changeColor1(button) {
+			button.style.color = "red";
+		}
+		
+		function changeColor2(button) {
+			button.style.color = "black";
+		}
+	</script>
+</head>
+<body>
+	<button onmousedown="changeColor1(this)" onmouseup="changeColor2(this)">눌러보세요!</button>
+</body>
+</html>

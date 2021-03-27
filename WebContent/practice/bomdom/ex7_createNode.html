@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		function addtext(t){
+			//createTextNode(text) : 텍스트 노드 생성
+			var node = document.createTextNode(t);
+			
+			//appendChild(node) : 새로운 노드를 마지막에 추가
+			document.getElementById("target").appendChild(node);
+		}
+	</script>
+</head>
+<body>
+	<div id="target" style="font: 20px bold;" onclick="addtext('무궁화 꽃이 피었습니다.')">
+	여기를 클릭하세요		
+	</div>
+</body>
+</html>
