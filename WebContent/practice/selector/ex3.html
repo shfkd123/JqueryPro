@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+	<p>JQUERY로 요소 생성하기</p>
+	<!-- <img alt="커피" src="../../images/coffee.jpg" height="100" onclick=""> -->
+	<button type="button" onclick="test()">클릭</button>
+</body>
+
+<script type="text/javascript">
+	function test(){
+		var ele = $("<p>JQUERY로 요소 생성하기</p>"); // --> p요소가 생성됨
+		ele.appendTo("body"); //선택된 요소를 ~에 추가하기
+
+		//$('<img alt="커피" src="../../images/coffee.jpg">')
+		var img = $("<img>", {
+			"alt" : "커피"
+			,"src" : "../../images/coffee.jpg"
+			,"height" : "100"
+			,"click" : function(){
+				alert("밥!");
+			}
+		});
+		img.appendTo("body");
+	}
+		
+</script>
+</html>

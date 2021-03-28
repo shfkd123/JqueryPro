@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	function checkNotEmpty() {
+		var eleName = document.getElementById("userName");
+		if(eleName.value.length == 0){
+			alert("아이디가 비어있네여!");
+			eleName.focus();
+			return;
+		}
+	}
+	</script>
+</head>
+<body>
+	<h3>회원가입</h3>
+	<form>
+		이름 : <input type="text" id="userName"><br>
+		주소 : <input type="text" id="addr"><br>
+		생일 : <input type="date" id="birthday"><br>
+		아이디 (6-8 문자)<input type="text" id="username"><br>
+		이메일 : <input type="email" id="email"><br>
+		휴대폰 : <input type="tel" id="phone"><br>
+		<button type="submit" onclick="checkNotEmpty()">확인</button>
+	</form>
+</body>
+</html>

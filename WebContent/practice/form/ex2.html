@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>데이터 길이 검증</title>
+	<script type="text/javascript">
+		function checkLength(elem, min, max) {
+			var s = elem.value;
+			if(s.length >= min && s.length <= max){
+				alert("사용가능한 아이디 입니다.");
+				return;
+			}
+			else {
+				alert(min + " 문자와 " + max + " 문자 사이로 입력하세요!");
+				elem.focus();
+				return;
+			}
+		}
+	</script>
+</head>
+<body>
+	<form> 
+		이름 (6-8 문자): <input type="text" id="name">
+		<button type="button" onclick="checkLength(document.getElementById('name'), 6, 8)">확인</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	function readFile() {
+		var files = document.getElementById("attachFile").files; //FileList반환
+		var output = "";
+		
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];			
+			output += file.name + "\n"; //file.name 파일명 반환
+			output += file.type + "\n"; //file.type 파일 유형 반환
+			output += file.size + "\n"; //file.size 파일 사이즈 반환
+			output += file.lastModifiedDate + "\n"; //lastModifiedDate 최종 수정 시간
+		}
+		document.getElementById('result').innerHTML = output;
+	}
+		
+	</script>
+</head>
+<body>
+	<input type="file" id="attachFile">
+	<button type="button" onclick="readFile()">파일 읽기</button>
+	<br>
+	<textarea id="result" rows="6" cols="60"></textarea>
+	
+</body>
+</html>

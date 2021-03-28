@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Drag & Drop</title>
+	<script type="text/javascript">
+	function allDrop(ev) {
+		//기본 동작을 막는 함수(작성 코드와의 충돌을 피하기 위해 드랍을 허용하도록 함.)
+		ev.preventDefault(); 
+	}
+	function drag(ev) {
+		ev.dataTransfer.setData("text", ev.target.id);
+	}
+	function drop(ev) {
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		ev.target.appendChild(document.getElementById(data));
+	}
+	</script>
+</head>
+<body>
+	<!-- 
+	ondrop : 마우스 버튼을 놓았을 때, 반드시 처리 할 내용 
+	ondragover : 드래그 도중 마우스가 다른 요소 위에 있을 때 발생. 만약 타겟 요소에서 dragover 이벤트가 발생하면 드롭 허용
+	ondragstart : dataTransfer 객체에 setDate()호출 데이터 설정
+	
+	-->
+	<div ondrop="drop(event)" ondragover = "allowDrop(event)"></div>
+	<br>
+	<img id="drag1" src="../../images/flowers.jpg" width="100" draggable="true" ondragstart="drag(event)">
+</body>
+</html>

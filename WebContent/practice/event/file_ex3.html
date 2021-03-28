@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		.box {
+			background-color: #AAAAAA;
+			border: 1px solid #999999;
+			margin-bottom: 10px;
+		}
+		
+		#fileInfo {
+			background-color: white;
+			border: 1px dashed orange;
+			height: 100px;
+		}
+		
+		img {
+			height: 100px;	
+		}
+		textarea {
+			width: 90%;
+		}
+	</style>
+	<script type="text/javascript">
+	function readFile(){
+		var files = document.getElementById("inputFile").files; //파일 리스트
+		if(files.length <1){
+			alert("선택된 파일이 없습니다.");
+			return;
+		}
+		
+		var file = files[0];
+		
+		//파일 정보 가져오기
+		var str = "파일명 : " + file.name + "<br>"
+					+ "파일유형 : " + file.type + "<br>"
+					+ "파일크기 : " + file.size + "<br>"
+					+ "수정일시 : " + file.lastModifiedDate + "<br>";
+
+		document.getElementById("fileInfo").innerHTML = str;
+		
+		//파일 읽기 결과 출력
+		//파일 유형으로 구별
+		//img - text
+		var reader = new FileReader();
+		
+		if(file.type.substr(0 ,5) == "image") {
+			//이미지인 경우
+			reader.readAsDataURL(file);
+		}else{
+			//이미지가 아닌 경우
+			reader.readAsText(file); //택스트로써 파일을 읽는다.
+		}
+		reader.onload = function(){
+			document.getElementById("taResult").innerHTML = reader.result;
+			
+			var objImg = document.getElementById("imgResult");
+			//이미지인 경우
+			if(file.type.substr(0, 5) == "image"){
+				//이미지가 보이게
+				objImg.src = reader.result;
+				objImg.alt = file.name;
+				objImg.style.display = "inline";
+			} else {
+				//이미지가 보이지 않게
+				objImg.style.display = "none"; //보이지 않는 설정 
+			}
+			
+		}
+	}
+	
+	
+	</script>
+</head>
+<body>
+	<div class="box">
+		<input type="file" id="inputFile">
+		<button type="button" onclick="readFile()">읽기</button>
+	</div>
+	
+	<div class="box">
+		<h3>결과 출력(FileReader 객체)</h3>
+		<p>이미지 파일일 경우에는  DataURL형식으로 아닌경우에 Text형식으로 </p>
+		<textarea rows="10" cols="50" id=taResult></textarea>
+	</div>
+	
+	<div class="box">
+		<h3>파일 정보(File객체)</h3>
+		<p>이미지파일을 읽은 경우에 이미지가 표시된다.<br>
+			 다른 파일을 읽었을 경우 이미지가 표시되지 않는다.<br>
+<!-- 			<img alt="coff" src="" id="imageResult"> -->
+		</p>
+		<br>
+		<div id="fileInfo"></div>
+	</div>
+</body>
+</html>

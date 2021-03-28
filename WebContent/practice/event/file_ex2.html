@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	function readFile(){
+		if(!window.File || !window.FileReader){
+			alert("File API가 지원되지 않습니다.");
+			return;
+		}
+		
+		var files = document.getElementById('attachFile').files;
+		if(!files.length){
+			alert("입력된 파일이 없습니다.");
+			return;
+		}
+		
+		var file = files[0];
+		var reader = new FileReader();
+		reader.readAsText(file); //file의 컨텐츠를 문자열로 읽어서 reader의 result에 설정
+		
+		reader.onload = function(){ //읽기가 완료되었을 때 발생
+			document.getElementById('result').innerHTML = reader.result; //reader.result :파일의 컨텐츠 반환
+		};
+	}
+	                                
+		
+	</script>
+</head>
+<body>
+	<input type="file" id="attachFile">
+	<button type="button" onclick="readFile()">파일 읽기</button>
+	<br>
+	<textarea id="result" rows="6" cols="60"></textarea>
+	
+</body>
+</html>

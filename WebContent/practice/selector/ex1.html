@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("body").css("background-color", "yellow"); //전체 배경색을 변경
+			$("h1").css("color", "blue"); //h1요소의 글자색을 파랑
+			$("#para").css("color", "green"); //id가 para인 요소의 글자색은 녹색
+			$(".sample").css("color", "red"); //class가 sample요소의 글자색은 빨강
+		});
+	</script>
+</head>
+<body>
+	<h1>제목입니다.</h1>
+	<h2 id="para">작은 제목입니다.</h2>
+	<h2 class="sample">샘플 입니다.</h2>
+</body>
+</html>
