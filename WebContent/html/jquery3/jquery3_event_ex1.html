@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	//화면 초기 설정
+	   $(document).ready(function(){
+		//바디를 클릭했을 때 이벤트명, 클릭한 요소, 클릭한 위치좌표, 클릭한 버튼종류를 메시지로 보여줘
+		
+		$("body").click(function(e){ //파라미터로 이벤트 받아옴. //바디를 클릭했을 때 어떤 행위(이벤트)를 해줘~
+			var str = "";
+			str = "이벤트종류 : " + e.type +"\n"
+				+ "이벤트 발생요소 :" + e.target +"\n"
+				+ "클릭좌표 X : " + e.pageX +"\n"
+				+ "클릭좌표 Y : " + e.pageY +"\n"
+				+ "스크린좌표X : " + e.screenX +"\n"
+				+ "스크린좌표Y : " + e.screenY +"\n"
+				+ "클릭버튼 : " + e.button; +"\n"
+				
+			alert(str);
+		}); 
+		   
+	});
+	</script>
+	
+</head>
+<body>
+	<div style="width: 300px; height: 300px; background-color: yellow;"></div>
+	<br>
+	<button type="button">버튼</button>
+	
+</body>
+</html> 

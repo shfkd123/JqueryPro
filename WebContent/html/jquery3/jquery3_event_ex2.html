@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("body").mouseover(function(e){
+			var str = "pageX,Y:" + e.pageX + e.pageY
+					+ "screenX,Y:" + e.screenX + e.screenY;
+			$("div").html(str);
+		});
+/* 		mouseover : function(e){
+			var str = "클릭좌표 X: " + e.pageX + "\n"
+					+ "클릭좌표 Y: " + e.pageY + "\n"
+					+ "스크린좌표X : " + e.screenX +"\n"
+					+ "스크린좌표Y : " + e.screenY +"\n";
+					
+				document.write(str);
+		} */
+	});
+	
+	</script>
+</head>
+<body>
+	<div id="log" style="height: 50px; background-color: yellow"></div>
+</body>
+</html>

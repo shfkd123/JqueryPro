@@ -6,39 +6,57 @@
 	<script src="../../js/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			
+			/*
+			:input 모든 input(button, select, textarea 요소들)
+			:text text타입의 input요소
+			:password password 타입의 input 요소
+			:radio radio타입의 input요소
+			:checkbox checkbox 타입의 input 요소
+			:submit submit타입의  input과 button요소
+			:reset reset타입의 input과 button요소
+			:image image타입의 input요소
+			:button button요소들과 type이 button인 input요소
+			:file file타입의 input요소
+	
+			*/
+					
 			//input 요소 테두리 lime, 배경색 핑크 (form 선택자)
-			$("input[type]").css("border","2px solid lime");
-			$("input[type=text]").css("background-color","pink");
+			$(":input").css("border","2px solid lime");
+			$(":input").css("background-color","pink");
 
 			//input type이 button인 요소 배경색 노란
 			$("input[type=button]").css("background-color","yellow");
 			
 			//Button 요소와 input type이 button 인 요소 배경색 하늘색 (form 선택자)
-			$("input[type=button]").css("background-color","aqua");
-			$("button[type]").css("background-color","aqua");
+			// ----> input type이 button인 요소 배경색 검정, 글자색 흰색 
+			$(":input").css("background-color","black");
+			$(":input").css("color","white");
+			$(":button").css("background-color","aqua");
 			
 			//Type이 submit 요소의 배경색 녹색 (form 선택자)
-			$("button[type=submit]").css("background-color","green");
-			$("input[type=submit]").css("background-color", "green");
+			$(":submit").css("background-color","green");
+			$(":submit").css("background-color", "green");
 			
 			//Type이 reset인 요소의 배경색 노랑 (form 선택자)
-			$("button[type=reset]").css("background-color", "yellow");
-			$("input[type=reset]").css("background-color", "yellow");
+			$(":reset").css("background-color", "yellow");
+			$(":reset").css("background-color", "yellow");
 			
 			//Type이 text, password 인 요소의 테두리 파랑 (form 선택자)
-			$("input[type=text]").css("border", "2px solid blue");
+			$(":text").css("border", "2px solid blue");
+			$(":password").css("border", "2px solid blue");
 			
 			//Type이 file, image인 요소의 테두리 빨강 (form 선택자)
-			$("input[type=file]").css("border", "2px solid red");
-			$("img[type]").css("border", "2px solid red");
+			$(":file").css("border", "2px solid red");
+			$(":image").css("border", "2px solid red");
 			
 			//Type이 file 배경색 핑크 (form 선택자)
-			$("input[type=file]").css("background-color","pink");
+			$(":file").css("background-color","pink");
 			
-			//textarea 요소 테두리 lime 배경색 핑크 (form 선택자)
+			//textarea 요소 테두리 lime 배경색 핑크
 			$("textarea").css("border","2px solid lime");
 			$("textarea").css("background-color","pink");
-			
+			 
 			//button 요소 테두리 lime
 			$("button[type]").css("border","2px solid lime");
 			

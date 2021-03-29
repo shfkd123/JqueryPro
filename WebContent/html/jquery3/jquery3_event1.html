@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../../js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+
+   //alert($("p"));
+   //console.log($("p"));   
+   
+   //화면 초기 설정
+   $(document).ready(function (){
+      
+   $("p").click(function(){
+      alert("클릭했습니다.");
+   });
+      
+   $("p").on({      
+      mouseover : function (){
+         //배경색 바꾸기 
+         $(this).css("background-color", "yellow");
+      }
+      , mouseout : function (e){
+         //배경색 원래대로 바꾸기   
+         $(this).css("background-color", "");
+         console.log(e);
+         console.log(e.type);
+         console.log(e.target);
+         console.log(e);
+      }
+   }); 
+});
+
+   
+   
+   </script>
+</head>
+<body>
+   <h1 onclick="alert(1);">jquery 이벤트</h1>
+   <p>이벤트를 넣어줄게요</p>
+   <p>이벤트를 넣어줄게요2</p>
+   <p>이벤트를 넣어줄게요3</p>
+   <p>이벤트를 넣어줄게요4</p>
+   <p>이벤트를 넣어줄게요5</p>
+   
+</body>
+</html>
