@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		.emphasis {
+		color: red;
+		font-size: 1.5em;
+	</style>
+	
+	
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//on이벤트와 그냥 이벤트 사용의 차이 : 동적으로 추가/ 동적 추가 X
+/* 			
+			//방법 1)  mouseover/mouseout 이벤트 바인딩
+
+			//p 태그에 마우스를 올리면 글자가 빨간색, 1.5배로 커진다. (mouseover) //동적으로 추가되지 않는다.
+			$("p").mouseover(function(){
+				$(this).css("Color", "red");	
+			});
+			
+			//p 태그에서 마우스를 내리면 원래대로 돌아간다. (mouseout)
+			$("p").mouseout(function(){
+				
+			});
+			
+			 */
+
+/* 			//방법2) on메서드 사용해서 이벤트 바인딩(연결) p태그를 동적으로 추가해도 같이 적용된다.
+			$("p").on("mouseover", function(){
+				$(this).css("color", "red");
+				//$(this).css("font-size", "150%");
+				$(this).css("font-size", "1.5em"); //em도 배율의 단위
+			});
+
+			$("p").on("mouseout", function(){
+				$(this).css("color", ""); //"" default값으로 black
+				$(this).css("font-size", "");
+			}); */
+			
+ 			
+			//방법3) on메서드 한번만 사용해서 한 개 이상 이벤트 바인딩
+/* 			$("p").on({
+				mouseover : function(){
+					// <p id="~" name="~" class="~"> p태그의 class에 접근해서 쓰고 싶음!!
+					//this.class = "emphasis"; --->이렇게 쓰면 안됨. .class는 내장 객체를 뜻함.
+					this.className = "emphasis"; //이렇게 사용
+				}
+				
+				,mouseout :function(){
+					this.className = "";
+				}
+				
+			}); */
+			
+			//방법4) toggle 메서드 사용 - jquery메서드
+			$("p").on("mouseover mouseout", function(){ //mouseover와 mouseout 둘다 이 function을 수행한다!
+				$(this).toggleClass("emphasis"); //()안에는 toggle를 하고자 하는 Class 이름을 넣어주면 된다.
+			})
+		});
+	
+	</script>
+</head>
+<body>
+	<p>마우스를 올려보세요 ~ </p>
+</body>
+</html>

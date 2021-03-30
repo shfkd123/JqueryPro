@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		div{
+			width: 300px;
+			height: 150px;
+			background-color: pink;
+		}
+		
+		span {
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			display: block;
+			margin: 20px;
+			text-align: center;	
+		}
+	
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("p").css("display", "none");
+		
+		$("span").click(function(e){
+			$(this).css("border", "solid 5px red");
+			e.stopPropagation();
+		});
+
+		$("button").click(function(e){
+			$(this).css("border", "solid 1px black");
+			e.stopPropagation();
+			
+			
+		});
+			
+		$("div").click(function(){
+			$(this).css("border", "solid 5px green");
+			
+			$("p").css("display", "inline");
+		});
+		
+		$("a").click(function(e) {
+				var age = prompt("태어난 년도 4자리를 입력하세요.");
+				if(age == null){
+					alert("입력된 값이 없습니다.");
+					return false;
+				}
+				var today = (new Date()).getFullYear()
+
+				var value = today - age;
+
+				if (value < 19) {
+					//return false;
+					e.preventDefault();
+					alert("20세 이상만 다음로 이동 가능합니다.");
+				}
+
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<p>hello</p>
+		<span>
+			<button type="button">클릭하세요</button>
+		</span>
+	</div>
+	<br>
+	<hr color="red">
+	<br>
+	<a href="http://www.daum.net" target="_blank">Daum으로 이동</a>
+	
+</body>
+</html>

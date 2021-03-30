@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("div").click(function(){
+			console.log("div 클릭!");
+		});
+		
+		$("p").click(function(){
+			console.log("p 클릭!");
+		});
+		
+		$("span").click(function(e){
+			console.log("span 클릭!");
+			
+			//방법1) 
+			//e.stopPropagation(); //부모 요소에 대한 이벤트 버블링을 중지하여서 부모 이벤트 실행X!!
+			
+			//방법2) 
+			return false; 
+		});
+		
+/* 		$("h1", "#ex2").click(function(){
+			(this).css("background-color", "greed");
+		});
+
+		$("span", "#ex2").click(function(){
+			(this).css("background-color", "red");
+		}); */
+		
+	});
+	</script>
+</head>
+<body>
+	<div style="height: 500px; background-color: yellow;">
+	애국가 1절
+		<p style="height: 250px; background-color: green;">
+			동해물과 백두산이
+			<br>
+			<span style="border: 5px solid red;">마르고 닳도록</span>
+			<br>
+			하느님이 보우하사 우리 나라 만세
+		</p>
+	</div>
+
+	<hr>
+
+	<h1 id="ex2">
+		큰 제목 안에 <span id="ex2">작은 영역</span>이 있다.
+	</h1>
+</body>
+</html>

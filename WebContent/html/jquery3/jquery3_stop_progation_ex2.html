@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("h1").click(function(){
+			$("h1").css("background-color", "green");
+		});
+		
+		$("span").click(function(e){
+			$("span").css("background-color", "red");
+			e.stopPropagation();
+		});
+
+	});
+	</script>
+</head>
+<body>
+	<h1>
+		큰 제목 안에 <span>작은 영역</span>이 있다.
+	</h1>
+</body>
+</html>

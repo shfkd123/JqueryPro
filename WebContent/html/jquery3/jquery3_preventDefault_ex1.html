@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//1) a링크 클릭 시 prompt로 나이 입력받기 
+			//2) 입력받은 나이가 15세 이상인 경우에 링크 이동 - 15세 미만이면 링크 X
+			$("a").click(function(e){
+				var age = prompt("나이를 입력하세요. (숫자만 입력 가능)");
+				//age >= 15 ===> 기본 동작
+				//age < 15 ===> 이것만 제어해주면 된다.
+				if(age < 15){
+					event.preventDefault(); //event는 내장 객체여서 그냥 사용 가능
+					e.preventDefault();
+					alert("15세 이상만 네이버로 이동 가능합니다.");
+					//하지만 파라미터로 event객체를 받아서 변수 선언 후 이용하는 것이 더 좋음.
+					//사용자에게는 왜 안되는지 이유를 알려주는 것이 좋음
+				}
+				
+			});
+			
+		});
+	</script>
+</head>
+<body>
+	<p>
+		<a href="http://www.naver.com" target="_blank">네이버로 이동</a>
+	</p>
+</body>
+</html>

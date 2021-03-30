@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		#ex3 div {
+			height: 400px;
+			width: 400px;
+			background: pink;
+		}
+		#ex3 span {
+			height: 100px;
+			width: 200px;
+			background: yellow;
+			display: block;
+			text-align: center;
+			margin: 50px;
+			padding: 10px;
+		}
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+// 		$("div").click(function(){
+// 			console.log("div 클릭!");
+// 		});
+		
+// 		$("p").click(function(){
+// 			console.log("p 클릭!!");
+// 		});
+		
+// 		$("span").click(function(e){
+// 			console.log("span 클릭!!!");
+// 			// case1)
+// // 			e.stopPropagation();
+		
+// 			// case2)
+// 			return false;
+// 		});
+
+		$("h1", "#ex2").click(function(){
+			$(this).css("background-color", "yellow");
+		});
+		
+		$("span", "#ex2").click(function(e){
+			$(this).css("background-color", "red");
+			return false;
+			//e.stopPropagation();
+		});
+		
+		var today = new Date();
+		
+		$("button", "#ex3").click(function(e) {
+			$(this).css("border", "3px solid red");
+			e.stopPropagation();
+		});
+		$("span", "#ex3").click(function() {
+			$(this).css("border", "3px dotted blue");
+			return false;
+		});
+		$("div", "#ex3").click(function() {
+			$(this).css("border", "3px double");
+			
+			// 방법1) p 태그를 만들어서 추가하기
+// 			var ele = $("<p>하이</p>");
+// 			$(this).append(ele);
+
+			// 방법2) 텍스트 노드 만들어서 추가하기
+			var node = document.createTextNode("헬로우");
+			$(this).append(node);
+			
+		});
+		
+		$("a", "#ex3").click(function(e) {
+			// 프롬프트로 태어난 년도 입력 받아서
+			var year = prompt("태어난 년도를 입력하세요. 숫자로만!");
+			
+			if(year == null) {
+				alert("입력된 값이 없습니다.");
+				return false;
+			}
+			if(year.trim().length == 0) {
+				alert("입력된 값이 없거나 빈 값을 입력하셨습니다.");
+				return false;
+			}
+			if(year.trim().length == 0) {
+				alert("숫자만 입력 가능 합니다.");
+				return false;
+			}
+			
+			
+			// 20세 이상이 경우만 페이지 이동하기
+			var currYear = (new Date()).getFullYear();// ==> 2021
+			if((currYear - year) < 19) {
+				// 2021년 1살 : 2021-2021=0
+				// 20살 : 19 ok
+				// 19살 : 18 X
+				
+				// 기본 동작이 되지 않도록 한다. - 링크이동이 되지 않도록 한다.
+				// case1)
+ 				//return false;
+		
+				// case2)
+				e.preventDefault();
+				alert("20살 이상만 이동 가능합니다.");
+			}
+			
+		});
+		
+		
+	});
+	</script>
+</head>
+<body>
+	<h1>예제 1</h1>
+	<div style="height: 250px; background-color: yellow;">
+		애국가 1절
+		<p style="height: 100px; background-color: lightgreen;">
+			동해물과 백두산이
+			<br>
+			<span style="border: 5px solid red">마르고 닳도록</span>
+			<br>
+			하느님이 보우하사 우리 나라 만세
+		</p>
+	</div>
+	<hr color="blue">
+	
+	<h1>예제 2</h1>
+	<div id="ex2">
+		<h1>큰 제목 안에 <span>작은 영역</span>이 있다.</h1>
+	</div>
+	<hr color="blue">
+	
+	<h1>예제 3</h1>
+	<div id="ex3">
+		<div>
+			<span>
+				<button type="button">클릭하세요.</button>
+			</span>
+		</div>
+		<hr>
+		<br>
+		<a href="http://www.daum.net" target="_blank">Daum</a>으로 이동
+	</div>
+	
+</body>
+</html>
+
