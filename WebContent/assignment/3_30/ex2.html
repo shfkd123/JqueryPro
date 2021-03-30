@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>예제 3</title>
+	<style type="text/css">
+		div {
+			float: left;
+			padding-right: 50px;
+		}
+		section {
+			width: 500px;
+			height: 400px;
+			float: left;
+			
+		}
+	
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#sh1").hide();
+			$("#sh2").hide();
+			$("#sh3").hide();
+
+			$("#s1").slideUp();
+			$("#s2").slideUp();
+			$("#s3").slideUp();
+			
+			$("#f1").fadeOut();
+			$("#f2").fadeOut();
+			$("#f3").fadeOut();
+	
+
+			$("#jQuery_show").click(function() {
+				$("#jquery_book").show();
+				$("#jsp_book").hide();
+				$("#uml_book").hide();
+			});
+			$("#JSP_show").click(function() {
+				$("#jsp_book").show();
+				$("#jquery_book").hide();
+				$("#uml_book").hide();
+			});
+			$("#UML_show").click(function() {
+				$("#uml_book").show();	
+				$("#jquery_book").hide();
+				$("#jsp_book").hide();
+
+			});
+			
+			$("#jQuery_slide").click(function() {
+				$("#jquery_book").slideDown();
+				$("#jsp_book").slideUp();
+				$("#uml_book").slideUp();
+			});
+			$("#JSP_slide").click(function() {
+				$("#jsp_book").slideDown();
+				$("#jquery_book").slideUp();
+				$("#uml_book").slideUp();
+			});
+			$("#UML_slide").click(function() {
+				$("#uml_book").slideDown();	
+				$("#jquery_book").slideUp();
+				$("#jsp_book").slideUp();
+				slideUp
+			});
+
+			$("#jQuery_fade").click(function() {
+				$("#jquery_book").fadeIn();
+				$("#jsp_book").fadeOut();
+				$("#uml_book").fadeOut();
+			});
+			$("#JSP_fade").click(function() {
+				$("#jsp_book").fadeIn();
+				$("#jquery_book").fadeOut();
+				$("#uml_book").fadeOut();
+			});
+			$("#UML_fade").click(function() {
+				$("#uml_book").fadeIn();	
+				$("#jquery_book").fadeOut();
+				$("#jsp_book").fadeOut();
+
+			});
+		});
+	</script>
+	
+</head>
+<body>
+	<h3>교재 목록</h3>
+	<div>
+	<div id="show_hide">
+		<h4>Show hide</h4>
+		<ul>
+			 <li id="jQuery_show"><a href="../../images/jquery_book.jpg" target="main">jQuery 교재</a></li>
+			 <li id="JSP_show"><a href="../../images/jsp_book.jpg" target="main">JSP 교재</a></li>
+			 <li id="UML_show"><a href="../../images/uml_book.jpg" target="main">UML 교재</a></li>	
+		</ul>
+				
+	</div>
+	
+	
+	<div id="slide">
+		<h4>SlideUp SlideDown</h4>
+		<ul>
+			 <li id="jQuery_slide"><a href="../../images/jquery_book.jpg" target="main">jQuery 교재</a></li>
+			 <li id="JSP_slide"><a href="../../images/jsp_book.jpg" target="main">JSP 교재</a></li>
+			 <li id="UML_slide"><a href="../../images/uml_book.jpg" target="main">UML 교재</a></li>	
+		</ul>
+				
+	</div>
+	
+	
+	<div id="fade">
+		<h4>FadeIn FadeOut</h4>
+		<ul>
+			 <li id="jQuery_fade"><a href="../../images/jquery_book.jpg" target="main">jQuery 교재</a></li>
+			 <li id="JSP_fade"><a href="../../images/jsp_book.jpg" target="main">JSP 교재</a></li>
+			 <li id="UML_fade"><a href="../../images/uml_book.jpg" target="main">UML 교재</a></li>	
+		</ul>
+				
+	</div>
+	
+	
+	</div>
+	
+	<section>
+		<img id="sh1" alt="jQuery" src="../../images/jquery_book.jpg" style="width: 150px; height: 200px;">
+		<img id="sh2" alt="jQuery" src="../../images/jsp_book.jpg" style="width: 150px; height: 200px;">
+		<img id="sh3" alt="jQuery" src="../../images/uml_book.jpg" style="width: 150px; height: 200px;">
+
+		<img id="s1" alt="jQuery" src="../../images/jquery_book.jpg" style="width: 150px; height: 200px;">
+		<img id="s2" alt="jQuery" src="../../images/jsp_book.jpg" style="width: 150px; height: 200px;">
+		<img id="s3" alt="jQuery" src="../../images/uml_book.jpg" style="width: 150px; height: 200px;">
+
+		<img id="f1" alt="jQuery" src="../../images/jquery_book.jpg" style="width: 150px; height: 200px;">
+		<img id="f2" alt="jQuery" src="../../images/jsp_book.jpg" style="width: 150px; height: 200px;">
+		<img id="f3" alt="jQuery" src="../../images/uml_book.jpg" style="width: 150px; height: 200px;">
+	</section>
+	
+	<section>
+		<iframe name="main" frameborder="0" width="550" height="600"></iframe>
+	</section>
+</body>
+</html>
