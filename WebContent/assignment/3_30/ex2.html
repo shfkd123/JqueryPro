@@ -8,13 +8,14 @@
 	</style>
 	<script src="../../js/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function){
-			$("#img1").hide();
+		$(document).ready(function(){
+			$("img").hide();
 			
-			$("li", "#jquery").click(function(){
-				
+			$("li", "#jquery").click(function(e){
+				$("img").show();	
+				e.target.hre = "../../jquery_book.jpg"
 			});
-		}
+		});
 
 	</script>
 	
@@ -28,7 +29,7 @@
 			<li id="uml"><a href="../../images/uml_book.jpg">UML교재</a></li>
 		</ul>
 		<hr>
-		<img id="img1" alt="책 이미지임." src="../../images/jsp_book.jpg">
+		<img alt="책 이미지임." src="../../images/jsp_book.jpg">
 	</div>
 </body>
 </html>

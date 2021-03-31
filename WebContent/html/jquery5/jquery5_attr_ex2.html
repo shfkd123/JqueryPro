@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Attr_예제2</title>
+	<style type="text/css">
+		img {
+			width: 200px;
+			height: 200px;
+			
+		}
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("button").click(function(){
+				/*
+				//$("img").attr("title", "flower");
+				var str = $("#img1").attr("src");
+				// "../../images/flowers.jpg"
+				str.split("/"); 
+				//split을 하면 이렇게 배열로 바뀜 ==>["..","..","images", "flowers.jpg"]
+				var fileName = arr[arr.length-1];
+				//"flowers.jpg"				
+				$("#img1").attr("title", fileName); 
+				*/
+				
+				//case1) for문 사용
+				/* var objs = $("img");
+				for(){
+					
+				} */
+				
+				//case2) each() 사용
+				$("img").each(function(){
+					console.log(this); //this는 이미지 객체 
+					var src = $(this).attr("src");
+					var arr = src.split("/");
+					var fileName = arr[arr.length-1];
+					$(this).attr("title", fileName);
+					
+				});	
+			});
+		});
+		
+	</script>
+</head>
+<body>
+	<div>
+		<img id="img1" alt="이미지임" src="../../images/flowers.jpg">
+		<img alt="이미지임" src="../../images/coffee.jpg">
+		<img alt="이미지라고" src="../../images/sky.jpg">
+		<img alt="이미지임" src="../../images/tiger.jpg"> 
+		<img alt="이미지라고" src="../../images/universe.jpg">
+		<br><br>
+		<button type="button">눌러보세요</button>
+	</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>예제3</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+	<!-- attr / prop(상태)-->
+
+	체크박스  : <input type="checkbox" checked="checked">
+	<br><br>
+	<input type="radio" id="genderMale" name="gender" value="M">
+		<label for="genderMail">남자</label>
+		<input type="radio" id="genderFeMale" name="gender" value="Y" checked="checked">
+		<label for="genderFeMale">여자</label>
+	<br><br>
+	리스트박스 :
+	<select>
+			<option value="one" selected="selected">하나</option>
+			<option value="two">둘</option>
+			<option value="three">셋</option>
+	</select>
+	<br><br>
+	(readonly): <input type="text" value="가나다" reado nly="readonly">
+	<br><br>
+	(disabled):
+	<button type="button" disabled="disabled">실행</button> <!--disabled는 서버로 전송 안됨. -->
+	<button type="button">attr확인</button>
+	<button type="button">prop확인</button>
+	
+	<hr>
+	<input type="checkbox" id="chkAll" checked="checked">
+	<label for="chkAll">전체선택</label>
+	
+	<input type="checkbox" id="chk1">
+	<label for="chk1">1</label>
+	
+	<input type="checkbox"id="chk2">
+	<label for="chk2">2</label>
+	
+	<input type="checkbox"id="chk3">
+	<label for="chk3">3</label>     
+	
+	<input type="checkbox"id="chk4">
+	<label for="chk4">4</label>
+	
+	<input type="checkbox"id="chk5">
+	<label for="chk5">5</label>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#chkAll").click(function(){
+			//1) '전체선택' 체크박스가 체크되어 있는지 확인
+			var isChecked = $(this).prop("checked");
+			
+			//2) '전체선택'체크박스가 체크되어 있다면 다른 체크박스 체크해주기
+			if(isChecked) {
+				//다른 체크박스 체크해주기
+				
+				//$("#chkAll ~ checkbox")
+				$("[name=hobby]").prop("checked", true);
+				
+				//$(":checkbox")
+			} else {
+				//3) '전체선택' 체크박스가 체크되어 있지 않다면 다른 체크박스 체크 해제 해주기
+				$("[name=hobby]").prop("checked", false);				
+			}
+			
+			
+		});
+	});
+</script>
+</html>
