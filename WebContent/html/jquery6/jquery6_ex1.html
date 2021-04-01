@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//버튼들에 클릭 이벤트 바인딩
+			$("button").click(function(){
+				var str = "";
+				var btnId = $(this).attr("id");
+				
+				if(btnId == "btnCase1"){
+					//$("li.2-1").closet("ul");  <---div에 보여줄 것
+					$("li.2-1").closest("ul").css("background-color", "red");
+					str = '$("li.2-1").closet("ul")';
+					
+				}else if(btnId == "btnCase2"){
+					//$("li.2-1").closet("li");  <---div에 보여줄 것
+					$("li.2-1").closest("li").css("background-color", "green");
+					str = '$("li.2-1").closet("li")';
+									
+				}else if(btnId == "btnCase3"){
+					
+				
+				}else if(btnId == "btnCase4"){
+					
+				}
+				
+				$("#divScript").text(str);
+			});
+		});
+	</script>
+</head>
+<body>
+	<button type="button" id="btnCase1">case1</button>
+	<button type="button" id="btnCase2">case2</button>
+	<button type="button" id="btnCase3">case3</button>
+	<button type="button" id="btnCase4">case4</button>
+	
+	<div id="divScript"></div>
+	<ul class="1" id="="one">
+
+		<li class="1">1</li>
+		<li class="2">2
+
+			<ul class="2-1">
+				<li class="2-1">2-1</li>
+				<li class="2-2">2-2
+
+					<ul class="2-2-1">
+						<li class="2-2-1">2-2-1</li>
+						<li class="2-2-2">2-2-2</li>
+						<li class="2-2-3">2-2-3</li>
+					</ul>
+				<li class="2-3">2-3</li>
+				</li>
+			</ul>
+		</li>
+		<li class="3">3</li>
+	</ul>
+</body>
+</html>

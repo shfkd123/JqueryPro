@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+	<input type="checkbox" id="chkAll">
+	<label for="chkAll">전체선택</label>
+	
+	<input type="checkbox" id="chk1" name="hobby">
+	<label for="chk1">1</label>
+	
+	<input type="checkbox"id="chk2" name="hobby">
+	<label for="chk2">2</label> 
+	
+	<input type="checkbox"id="chk3" name="hobby">
+	<label for="chk3">3</label>     
+	
+	<input type="checkbox"id="chk4" name="hobby">
+	<label for="chk4">4</label>
+	
+	<input type="checkbox"id="chk5" name="hobby">
+	<label for="chk5">5</label>
+</body>
+	<script type="text/javascript">		
+	$(document).ready(function(){
+		$("#chkAll").click(function(){
+			//1) '전체선택' 체크박스가 체크되어 있는지 확인
+			var isChecked = $(this).prop("checked");
+			
+			//2) '전체선택'체크박스가 체크되어 있다면 다른 체크박스 체크해주기
+			if(isChecked) {
+				//다른 체크박스 체크해주기
+				
+				//$("#chkAll ~ checkbox")
+				$("[name=hobby]").prop("checked", true); //set메소드처럼 true라는 상태로 바꿔라!
+				
+				//전체선택이 되어있는 상태에서 체크 박스 중 하나를 풀면 전체선택의 체크 상태를 false로 만든다.
+				var Checked = $("[name=hobby]").prop("checked");
+				if (Checked = false) {
+					$("#chkAll").prop("cheked", false);
+				}
+				
+				//$(":checkbox")
+			} else {
+				//3) '전체선택' 체크박스가 체크되어 있지 않다면 다른 체크박스 체크 해제 해주기
+				$("[name=hobby]").prop("checked", false);
+					
+			}		
+		});
+	});
+	</script>
+</html>

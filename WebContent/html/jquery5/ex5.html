@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		div {
+			border: solid 5px yellow;
+		}
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			var addObj1 = $("<img>", {
+							"src" : "../../images/flowers.jpg",
+							"width" : "100px",
+							"height" : "100px",
+			});
+			var addObj2 = $("<img>", {
+							"src" : "../../images/sky.jpg",
+							"width" : "100px",
+							"height" : "100px",
+			});
+			var addObj3 = $("<img>", {
+							"src" : "../../images/universe.jpg",
+							"width" : "100px",
+							"height" : "100px",
+			});
+			var addObj4 = $("<img>", {
+							"src" : "../../images/coffee.jpg",
+							"width" : "100px",
+							"height" : "100px",
+			});
+			
+			$("#flower1").click(function(){
+				$(this).append(addObj1);				
+			});
+			$("#flower2").click(function(){
+				$(this).append(addObj2);				
+			});
+			$("#flower3").click(function(){
+				$(this).append(addObj3);				
+			});
+			$("#flower4").click(function(){
+				$(this).append(addObj4);				
+			});
+			
+		});		
+	</script>
+</head>
+<body>
+	<div>
+		<p id="flower1">튜울립</p>
+		<p id="flower2">국화</p>
+		<p id="flower3">코알라</p>
+		<p id="flower4">수국</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+			div {
+				border: solid 5px yellow;
+			}
+			
+			img.tmp {
+				width: 100px;
+				height: 100px;
+			}
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		var imgRootPath = "../../images/";
+		
+		
+		$(document).ready(function(){
+			$("p").click(function(){
+				var fileName = $(this).attr("title"); //$ p태그
+				var strAlt = $(this).text();
+				
+				//case1) 이미지 만들어서 이미지 생성
+				var img = $("<img>"); //<img>
+				//img.attr("src", fileName); // <img src="flowers.jpg">
+				img.attr("src", "../../images/" + fileName); // <img src="flowers.jpg">
+				
+				//case2) 이미지 생성
+				var img = $("<img>", {
+							"src" : imgRootPath + fileName
+							,"alt" : strAlt
+							,"class" : "tmp"
+							});
+				
+				//p의 자식으로 추가
+				$(this).append(img);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<p title="coffee.jpg">튜울립</p>
+		<p title="coffee.jpg">국화</p>
+		<p title="coffee.jpg">코알라</p>
+		<p title="coffee.jpg">수국</p>
+		<!-- <p><input type="hidden" value="lion.jpg">수국</p> -->
+	</div>
+</body>
+</html>
