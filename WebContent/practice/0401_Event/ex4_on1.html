@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		//on이벤트 : 선택한 요소에 하나 이상의 이벤트를 넣을 때 사용
+		//p요소에 마우스를 올리면 intro라는 스타일이 적용되고 마우스 벗어나면
+		//적용됐던 스타일이 사라진다.
+			$(document).ready(function(){
+				$("p").on("mouseover", function(){
+					this.className = "intro";
+				});
+				$("p").on("mouseout", function(){
+					this.className = "";
+				});
+			});
+	</script>
+	<style type="text/css">
+		.intro{
+			font-size: 1.5em;
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<p>Move the mouse pointer over this paragraph</p>
+</body>
+</html>

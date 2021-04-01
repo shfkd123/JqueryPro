@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>마우스 이벤트 예제3</title>
+	<style type="text/css">
+		img {
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("button").css("display", "none");
+		
+		var orginSrc = "";
+		$("img").mouseover(function(e){
+			orginSrc = e.target.src;
+			e.target.src = "../../images/coffee.jpg";
+		});
+		$("img").mouseout(function(e){
+			e.target.src = orginSrc;
+		});
+		$("img").dblclick(function(e){
+			$(this).css("display", "none");
+			
+			var img = $("img");
+			var cnt = 0;
+			for (var i = 0; i < img.length; i++) {
+				if(img[i].style.display == "none"){
+					cnt++;
+				}
+			}
+			if(cnt == img.length){
+				$("button").css("display", "inline");
+			}			
+		});
+		$("button").click(function(){
+			$("img").css("display", "inline");
+			$(this).css("display", "none");
+		});
+	});
+	</script>
+</head>
+<body>
+	마우스를 이미지위에 올리면 다른 이미지로 변경  mouseover<br>
+	마우스가 이미지위에서 나가면 원래 이미지로 돌아옴 mouseout<br>
+	이미지 더블 클릭 시 이미지 사라짐 dblclick<br>
+	이미지가 모두 사라지면 이미지 하단에 [보이기] 버튼이 나타남 <br>
+	
+	<img alt="꽃" src="../../images/flowers.jpg">
+	<img alt="꽃" src="../../images/flowers2.jpg">
+	<img alt="하늘바다" src="../../images/sky.jpg">
+	<br>
+	<button type="button">보이기</button>
+</body>
+</html>

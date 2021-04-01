@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("div").click(function(e){
+			var str = " type 이벤트 종류 :" + e.type +"\n"
+			+ "target 이벤트가 발생한 객체 : " + e.target +"\n"
+			 + "pageX : " + e.pageX +"\n"
+			 + "pageY : " + e.pageY +"\n"
+			+ "screenX : " + e.screenX +"\n"
+			+ "screenY : " + e.screenY +"\n"
+			+ "button 눌러진 마우스 버튼 : " + e.button;
+			
+			alert(str);
+		});
+	});
+	</script>
+</head>
+<body>
+	<h2>mousedown</h2>
+	<div style="width: 300px; height: 300px; background-color: yellow"></div>
+</body>
+</html>
