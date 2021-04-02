@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>자식 필터 예제</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//첫번째 리스트 아이템에 노란색 넣기
+			//$("li:first")--->필터방법
+			$("li").first().css("background-color", "yellow");
+			
+			//각 리스트의 첫번째 li에 빨간색 테두리 넣기
+			$("ol li:first-child").css("border", " 3px solid red");
+			//ol의 li중 첫째들만 뽑는다. 
+			
+			//마지막 li에 초록색 배경 넣기
+			$("li").last().css("background-color", "green");
+			
+			//각 리스트의 마지막 li에 파란색 점선 테두리 넣기 
+			$("ol li:last-child").css("border", " 3px dotted blue");
+		});
+	
+	</script>
+</head>
+<body>
+	여자들에게 인기있는 남자들
+	<ol>
+		<li>능력있는 남자</li>
+		<li>돈 많은 남자</li>
+		<li>잘 생긴 남자</li>
+		<li>프로그래머</li>
+	</ol>
+	<br>
+	남자들에게 인기있는 여자들
+	<ol>
+		<li>예쁜 여자</li>
+		<li>귀여운 여자</li>
+		<li>프로그래머 여자</li>
+	</ol>
+</body>
+</html>

@@ -3,14 +3,35 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<style type="text/css">
+		table {
+			
+		}
+	
+	</style>
 	<script src="../../js/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
+	$(document).ready(function(){
 		$("tr:even").css("background-color", "yellow");
+		//even - 짝수를 의미. 테이블의 0번째 tr부터 적용됨.
+		$("tr:odd").css("background-color", "green");
+		$("tr").first().css("background-color", "black");
+		$("tr").first().css("color", "white");
+		
+		/* $("tr").first().css({
+			"background-color" : "#000000"
+			,"color": "#000000"
+		}); */
+	});
 	
 	</script>
 </head>
 <body>
-	<table border="1">
+	<table>
+		<tr>
+			<td>번호</td>
+			<td>가격</td>
+		</tr>		
 		<tr>
 			<td>one</td>
 			<td>62만원</td>

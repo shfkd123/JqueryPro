@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript"  src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("button").click(function(){
+				// 화면에 ":checked" 사용할 수 있는 요소가 한개 밖에 없으므로 가능
+// 				$(":checked") // ==> 체크된 체크박스 여러개를 배열로 리턴
+
+// 				var objs = $(":checked");
+// 				for(var i=0 ; objs.length ; i++) {
+// 					//~~~~
+// 				}
+				
+				var str = "";
+				// case1)
+// 				$(":checked").each(function(idx, item){
+// 					var val = $(this).val(); // "낚시" or "등산"
+					
+// 					if(idx == 0) str += val;
+// 					else str += ", " + val;
+					
+// 				});
+				
+				// case2)
+// 				$(":checked").each(function(idx, item){
+// 					var val = $(this).val(); // "낚시" or "등산"
+// 					str += val + ", ";
+// 				});
+// 				// "장기, 바둑, "
+// 				str = str.substr(0, str.length-2);
+				
+				// case3) 체크박스의 value가 코드값인 경우
+// 				$(":checked").each(function(idx){
+// 					var val = "";
+// 					// 체크박스의 id와 라벨의 for가 연결되어 있으므로(값이 같음)
+// 					var tmpId = $(this).attr("id");
+// 					val = $("label[for=" + tmpId + "]").text();
+// 					// ==> $("label[for=hobby1]")
+					
+// 					if(idx == 0) str += val;
+// 					else str += ", " + val;
+					
+// 				});
+				
+				// case4) 체크박스의 value가 코드값인 경우 - 형제요소 찾기
+				// 체크박스 바로 뒤에 라벨이 위치함
+				$(":checked").each(function(idx){
+					var val = "";
+					console.log($(this).next());
+					val = $(this).next().text();
+					
+					if(idx == 0) str += val;
+					else str += ", " + val;
+					
+				});
+				
+				alert(str);
+				
+				$("#result").html(str);
+				
+			});
+			
+			
+			
+		});
+	</script>
+</head>
+<body>
+	<form>
+		취 미 : 
+		<input type="checkbox" name="hobby" value="A01" id="hobby1" checked>
+		<label for="hobby1">여행</label>
+		<input type="checkbox" name="hobby" value="A02" id="hobby2">
+		<label for="hobby2">장기</label>
+		<input type="checkbox" name="hobby" value="A03" id="hobby3">
+		<label for="hobby3">바둑</label>
+		<input type="checkbox" name="hobby" value="A04" id="hobby4">
+		<label for="hobby4">독서</label>
+		<input type="checkbox" name="hobby" value="A05" id="hobby5">
+		<label for="hobby5">낚시</label>
+<!-- 		<input type="checkbox" name="hobby" value="여행" id="hobby1" checked> -->
+<!-- 		<label for="hobby1">여행</label> -->
+<!-- 		<input type="checkbox" name="hobby" value="장기" id="hobby2"> -->
+<!-- 		<label for="hobby2">장기</label> -->
+<!-- 		<input type="checkbox" name="hobby" value="바둑" id="hobby3"> -->
+<!-- 		<label for="hobby3">바둑</label> -->
+<!-- 		<input type="checkbox" name="hobby" value="독서" id="hobby4"> -->
+<!-- 		<label for="hobby4">독서</label> -->
+<!-- 		<input type="checkbox" name="hobby" value="낚시" id="hobby5"> -->
+<!-- 		<label for="hobby5">낚시</label> -->
+		<br>	
+		<button type="button">전송</button>
+		<br><br>
+		<div>
+			선택 결과 : <span id="result"></span>
+		</div>
+	</form>
+
+</body>
+</html>

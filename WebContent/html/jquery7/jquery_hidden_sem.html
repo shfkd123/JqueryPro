@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		table {width: 100%;}
+	</style>
+	<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
+	<script>
+		$(document).ready(function() {
+			
+			
+			////////////////////////////////
+			
+			$("#btnHidden").click(function() {
+				$(":hidden", "#ex3").each(function(){
+					alert($(this).html());
+					console.log(this);
+				});
+			});
+			// "hidden요소"
+// 			$("button:contains(hidden)")
+			
+
+			$("#btnVisible").click(function() {
+				$(":visible", "#ex3").each(function(){
+					alert($(this).html());
+					console.log(this);
+				});
+			});
+			//////////////////////////////////////
+			
+			$("#btn1").click(function(){
+				var str = "";
+				$(":hidden", "#ex2").each(function(){
+// 					console.log();
+					str += "\n태그명 : " + $(this).prop("tagName")
+							+ "\n" + "유형 : " + this.type
+							+ "\n" + "값 : " + this.value;
+					
+				});
+				alert(str);
+				
+			});
+
+			
+			$(":enabled")
+			$(":disabled")
+			
+			
+		});
+	</script>
+</head>
+<body>
+	<div id="ex1">
+		<p>보이는 문단</p>
+		<p style="visibility: hidden;">숨겨진 문단</p>
+		<p style="display: none;">자리를 차지 하지 못한 문단</p>
+		<p style="opacity: 0;">투명한 문단</p>
+		<hr>
+		<button type="button" id="btnHidden">hidden요소</button>
+		<button type="button" id="btnVisible">visible요소</button>
+	</div>
+	
+	<br><hr color="red"><br>
+	
+	<div id="ex2">
+		<form>
+			I D : <input type="text" name="userID" value="hong">
+			<span style="display: none;">ID가 중복됩니다.</span>
+			<br>
+			이름 : <input type="text" name="userName" value="홍길동">
+			<span style="display: none;">이름을 입력하세요.</span>
+			<br>
+			성별 : <input type="radio" name="gender" value="남" id="genderMail" checked>
+			<label for="genderMail">남자</label>
+			<input type="radio" name="gender" value="여" id="genderFemail">
+			<label for="genderFemail">여자</label>
+			<br>
+			
+			<button type="button" id="btn1">hidden요소</button>
+			<button type="button" id="btn2">visible요소</button>
+			
+			<input type="hidden" id="userAge" name="userAge" value="39">
+			
+		</form>
+	</div>
+	
+	
+	<br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+

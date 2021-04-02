@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>체크한 값을 가져오기</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			/* $("button").click(function(){				
+				$("input").each(function(){
+					var isChecked = $(this).prop("checked"); 
+					if(isChecked) {
+						alert($("[name=hobby]"));
+					}
+				});
+			}); */
+			
+			$("button").click(function(){
+				//화면에 ":checked" 사용할 수 있는 요소가 한개 밖에 없으므로 가능
+				//case 1 for문 사용
+				/* $(":checked") //  ==> 체크된 체크박스 여러개를 배열로 리턴
+				var objs = $(":checked");
+				for (var i = 0; i < objs.length; i++) {
+					//~~~	
+				} */
+				
+				//case 2 each사용
+				var str = "";
+				$(":checked").each(function(idx, item){
+					var val = $(this).val(); //"낚시" or "등산"
+					str += val + " , ";
+				});
+				// "장기, 바둑, "
+				str = str.substr(0, str.length-2);
+				
+				alert(str);
+				
+				$("#result").html(str);
+				
+			/* 	//case 3)체크박스의 value값이 코드값인 경우 ex) value="A01"  
+				$(":checked").each(function(){
+					var val = "";
+					//체크박스의 id와 라벨의 for가  연결되어 있으므로 (값이 같음)
+					var tmpId = $(this).attr("id");
+					val = $("label[for=]" + tmpId + "]").text();
+					// ==> $("label[for=hobby1]")
+					
+					if(idx == 0) str += val;
+					else str += ", " + val;
+				}); */
+				
+				//case 4) 체크박스의 value가 코드값인 경우 - 형제요소 찾기
+				//체크박스 바로 뒤에 라벨이 위치함
+				$(":checked").each(function(idx){
+					var val = "";
+					$(this).next();
+					console.log($(this).next());
+					val = $(this).next().text();
+					
+					if(idx == 0) str += val;
+					else str += ", " + val;
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<form>
+		취미 : 
+		<input type="checkbox" name="hobby" value="여행" id="travle">
+		<label for="travle">여행</label>
+		<input type="checkbox" name="hobby" value="영화감상" id="movie">
+		<label for="movie">영화감상</label>
+		<input type="checkbox" name="hobby" value="독서" id="reading">
+		<label for="reading">독서</label>
+		<input type="checkbox" name="hobby" value="게임" id="game">
+		<label for="game">게임</label>
+		<input type="checkbox" name="hobby" value="음악감상" id="music">
+		<label for="music">음악감상</label>
+		<input type="checkbox" name="hobby" value="노래" id="sing">
+		<label for="sing">노래</label>
+		<input type="checkbox" name="hobby" value="쇼핑"id="shopping">
+		<label for="shopping">쇼핑</label>
+	
+		<br><br>
+		<button type="button">전송</button> <!-- type="button"을 쓰지 않으면 default값 submit으로 감 -->
+		<br><br>
+		<div>
+		선택결과 : <span id="result"></span>
+		</div>
+	</form> 
+</body>
+</html>

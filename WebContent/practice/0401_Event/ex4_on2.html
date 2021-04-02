@@ -3,12 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<style type="text/css">
+		 .intro {
+			font-size: 150%; color:red;
+		}
+	</style>
 	<script src="../../js/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
-	
+	//.toggleClass() : 선택한 요소에 클래스(Class) 값을 넣었다 뺐다 한다.
+	//$(this).toggleClass("intro"); p요소에 intro라는 클래스가 없으면
+	//추가하고, 있으면 제거한다.
+	$(document).ready(function(){
+		$("p").on("mouseover", function(){
+			$(this).toggleClass("intro");
+		})
+	});
 	</script>
 </head>
 <body>
-	<p>on 사용법에 대해 공부하고 있습니다. 지금은 두번째 방법</p>
+	<p> on 사용법에 대해 공부하고 있습니다. 지금은 두번째 방법</p>
 </body>
 </html> 

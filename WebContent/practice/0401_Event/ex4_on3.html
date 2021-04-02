@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#test").on({
+			mouseover : function(){
+				$("body").css("background-color", "lightblue");
+			}
+			,mouseout : function(){
+				$("body").css("background-color", "lightgray");
+			}
+			,click : function(){
+				$("body").css("background-color", "yellow");
+			}
+		})
+	});
+	</script>
+</head>
+<body>
+	<p id="test">Move the mouse pointer over this paragraph</p>
+</body>
+</html>

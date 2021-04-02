@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$("btn1").click(function(){
+		$(":hidden", "ex2").each(function(){
+		
+		});
+		
+		$("#btn1").click(function(){
+			$(":hidden", "#ex2").each(function(){
+				//console.log();
+				var str = "태그명 : "+ $(this).prop("tagName")
+						+ "\n" + "유형 : " this.type
+						+ "\n" + "값 : " this.value;
+			});
+			alert(str);
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="ex1">
+		<p>보이는 문단</p>
+		<p style="visibility: hidden;">숨겨진 문단</p>
+		<p style="display: none;">숨겨진 문단</p>
+		<p style="visibility: hidden;">숨겨진 문단</p>
+		<hr color="red">
+		I D : <input type="text" name="userName" value="Hong">
+		<br>
+		이 름 : <input type="text">
+		<br>
+		성별  : 
+			<span style="display:none">ID가 중복됩니다.</span>
+			
+			<input type="radio" id="genderMale" name="gender" value="M">
+			<label for="genderMale">남자</label>
+			
+			<input type="radio" id="genderFeMale" name="gender" value="Y">
+			<label for="genderFeMale">여자</label><br><br>
+			
+			<button>hidden요소</button>
+			<button>visible요소</button>
+			
+	</div>
+</body>
+</html>
