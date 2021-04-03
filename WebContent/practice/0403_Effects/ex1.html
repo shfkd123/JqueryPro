@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#hide").click(function(){
+			$("p").hide();
+		});
+		$("#show").click(function(){
+			$("p").show();
+		});
+		$("#toggle").click(function(){
+			$("p").toggle(1000);
+		});
+	});
+	</script>
+</head>
+<body>
+	<p>이 영역은 버튼을 누르면 사라졌다가 다시 나타납니다.</p>
+	<br><br>
+	<button id="hide" type="button">Hide</button>
+	<button id="show" type="button">Show</button>
+	<br><br>
+	<button id="toggle" type="button">토글버튼</button>
+	<div>
+		<p>안녕하십니까.</p>
+		<p>안녕히 가십시오.</p>
+	</div>
+</body>
+</html>

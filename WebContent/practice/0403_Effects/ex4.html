@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>과제</title>
+	<style type="text/css">
+		img {
+			width: 100px;
+			height: 100px;
+		}	
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("li a").click(function(e){
+			e.preventDefault();
+			var originSrc = $(this).attr("href");
+			$("#img").fadeOut(1000, function(){
+				$("#img").attr("src", originSrc);
+				$("#img").fadeIn(500);
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+	<h2>교재목록</h2>
+	<ul>
+		<li><a href="jquery_book.jpg">jQuery교재</a></li>
+		<li><a href="jsp_book.jpg">JSP교재</a></li>
+		<li><a href="uml_book.jpg">UML교재</a></li>
+	</ul>
+	<hr style="border-color: red;">
+	<img id="img" alt="이미지없음" src="noimage.png">
+</body>
+</html>

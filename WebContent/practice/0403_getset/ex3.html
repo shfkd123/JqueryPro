@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>prop()</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	//attr : 요소의 속성이나 정보(id, class, src, style, width)
+	//prop : 요소가 가지는 실제적인 상태 (checked, selected, disabled, readonly, multople),
+	//		true/false로 반환하고 설정함.
+	$(document).ready(function(){
+		$("#attr").click(function(){
+			var str = $("gender").val();
+			alert(str);
+		});
+		$("#prop").click(function(){
+			
+		});
+	});
+	</script>
+</head>
+<body>
+	<form>
+		<input type="radio" id="genderman" name="gender" value="남자">
+ 		<label for="genderman">남자</label>
+ 		<input type="radio" id="genderwoman" name="gender" value="여자" checked="checked">
+ 		<label for="genderwoman">여자</label><br><br>
+ 		<label for="sel">리스트박스</label> :
+ 		<select id="sel">
+ 			<option value="0">--선택--</option>
+ 			<option value="1">1</option>
+ 			<option value="2" selected="selected">2</option>
+ 		</select><br><br>
+ 		<label for="readText">(readonly)</label> :
+ 		<input type="text" id="readText" readonly="readonly"><br><br>
+ 		<label for="runBtn">(disabled)</label> :
+ 		<input type="button" id="runBtn" disabled="disabled" value="버튼">
+ 		<button id="attr" type="button">attr확인</button>
+ 		<button id="prop" type="button">prop확인</button>
+	</form>
+</body>
+</html>

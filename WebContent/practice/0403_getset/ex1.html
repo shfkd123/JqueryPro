@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>예제1 val() 사용하기</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btnview").click(function(){
+			//val() : 양식 필드의 값을 반환(value 속성의 값)
+			var str = $("#user").val() + "\n"
+					+ $(":radio[name='gender']:checked").val() + "\n"
+					+ $("#intro").val() + "\n"
+					+ $("#work").val();
+			
+			alert(str);
+		});
+	});
+	</script>
+</head>
+<body>
+ 	<form>
+ 		<label for="user">이름</label>
+ 		<input type="text" id="user" value="유재석">
+ 		<br>
+ 		<label>성별</label>
+ 		<input type="radio" id="genderman" name="gender" value="남자" checked="checked">
+ 		<label for="genderman">남자</label>
+ 		<input type="radio" id="genderwoman" name="gender" value="여자">
+ 		<label for="genderwoman">여자</label>
+ 		<br>
+ 		<label for="intro">소개</label>
+ 		<textarea id="intro" rows="4" cols="40"></textarea>
+ 		<br>
+ 		<label for="work">직업</label>
+ 		<select id="work">
+ 			<option value="programmer">프로그래머</option>
+ 			<option value="progamemer">프로게이머</option>
+ 		</select>
+ 		<br>
+ 		<button type="button" id="btnview">조사하기</button>
+ 	</form>
+</body>
+</html>

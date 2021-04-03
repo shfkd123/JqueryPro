@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>콜백 함수와 체이닝</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	//Callback함수 - 현재 작업(효과)가 완료 된 후 실행
+	$(document).ready(function(){
+		$("button").click(function(){
+			$("p").hide("slow", function(){
+				alert("숨김");				
+			});
+		});
+		
+		//체이닝(Chaining) - 메소드를 연결해서 실행 가능
+		$("p").css("color", "red").slideUp().slideDown();
+	});
+	</script>
+</head>
+<body>
+	<p>콜백함수와 체이닝</p>
+	<button>버튼</button>
+</body>
+</html>

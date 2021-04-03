@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("div").click(function(){
+			//left 250px에 도달할 때까지 div오른쪽으로 이동
+			$(this).animate({left: '250px', height: "150px"},1000);
+		});
+	});
+	</script>
+</head>
+<body>
+	<div style="background-color: green; position: absolute;">
+		이 영역에 애니메이션 효과를 사용
+	</div>
+</body>
+</html>

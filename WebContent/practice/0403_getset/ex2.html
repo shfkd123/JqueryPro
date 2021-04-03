@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>attr() : 속성 확인 및 변경 메소드</title>
+	<style type="text/css">
+		img {
+			width: 200px;
+			height: 200px;
+			
+		}
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("button").click(function(){
+			//each() 사용
+			$("img").each(function(){
+				var src = $(this).attr("src");
+				var arr = src.split("/");
+				var fileName = arr[3];
+				$(this).attr("title", fileName);
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+	<img alt="이미지" src="../../images/coffee.jpg">
+	<img alt="이미지" src="../../images/sky.jpg">
+	<img alt="이미지" src="../../images/universe.jpg">
+	<button type="button">눌러보세요</button>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#old").click(function(){
+			$("input").trigger("focus");
+			//이벤트의 기본 동작을 발생시킴
+			//선택된 모든 요소에 동작
+		});
+		$("#old").click(function(){
+			$("new").triggerHandler("focus");
+			//함수만 실행시키고, 이벤트의 기본 동작은 발생시키지 않음
+			//선택된 첫 번째 요소에만 동작
+			//버블링 되지 않음. 
+		});
+		$("input").focus(function(){
+			$("<span>포커스</span>").appendTo("body").fadeOut(1000);
+		});
+	});
+	
+	</script>
+
+</head>
+<body>
+	<button id="old">trigger</button>
+	<button id="new">triggerHandler</button>
+	<br><br>
+	<input type="text" value="To Be Focused">
+</body>
+</html>
