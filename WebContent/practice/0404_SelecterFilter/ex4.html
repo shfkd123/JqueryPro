@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>가시성상태 필터</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		//hidden - 숨겨진 모든 요소를 선택
+		//visible - 보여지는 모든 요소를 선택
+		
+		$("#hidden").click(function(){
+			$("body :hidden").each(function(){
+				alert($(this).html());
+				console.log(this);
+			});
+		});
+		$("#visible").click(function(){
+			$("body :visible").each(function(){
+				alert($(this).html());
+				console.log(this);
+			});
+		});
+		
+	});
+	</script>
+</head>
+<body>
+	<p>보이는 문단</p>
+	<p style="visibility: hidden;">숨겨진 문단</p>
+	<p style="display: none;">자리를 차지 하지 못한 문단</p>
+	<p style="opacity: 0;">투명한 문단</p>
+	<hr>
+	<button type="button" id="hidden">hidden버튼</button>
+	<button type="button" id="visible">visible버튼</button>
+</body>
+</html>

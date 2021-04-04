@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("td:nth-child(3n)").css("background-color", "#CCCCCC");
+		$("td:nth-child(3n+1)").css("background-color", "#888888");
+		$("td:nth-child(3n+2)").css("background-color", "#AAAAAA");
+		
+		$("tr:first-child td").css("background-color", "#000000").css("color", "#FFFFFF");
+	});
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>이름</td> <!-- 0 -->
+			<td>주소</td> <!-- 1 -->
+			<td>전화번호</td> <!-- 2 -->
+		</tr>
+		<tr>
+			<td>홍길동</td> <!-- 3 -->
+			<td>대전</td> <!-- 4 -->
+			<td>1111</td> <!-- 5 -->
+		</tr>
+		<tr>
+			<td>진달래</td> <!-- 6 -->
+			<td>서울</td> <!-- 7 -->
+			<td>2222</td> <!-- 8 -->
+		</tr>
+		<tr>
+			<td>개나리</td> <!-- 9 -->
+			<td>부산</td> <!-- 10 -->
+			<td>3333</td> <!-- 11 -->
+		</tr>
+		<tr>
+			<td>무궁화</td> <!-- 12 -->
+			<td>대구</td> <!-- 13 -->
+			<td>4444</td> <!-- 14 -->
+		</tr>
+	</table>
+</body>
+</html>

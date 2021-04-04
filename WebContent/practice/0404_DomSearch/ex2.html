@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>찾기메소드</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("p").click(function(){		
+			if($(this).parent().is("#div1")) {
+				$("#p1").append("<br>" + "무궁화 꽃이 피었습니다.");
+				$("#p1").nextAll("#p1").css("color", "red");
+			}
+			else if($(this).parent().is("#div2")){
+				$("#p3").append("<br>" + "사뿐이 즈려밟고 가시옵소서").css("color", "red");
+			}
+			else {
+				alert("작업대상이 아닙니다!");
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<p id="p1">무궁화 꽃이 피었습니다.</p>	
+	</div>
+	
+	<p id="p2">민지는 예쁘다~</p>
+	
+	<div id="div2">
+		<p id="p3">사뿐이 즈려밟고 가시옵소서</p>	
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DOM 탐색 메소드</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btnCase1").click(function(){
+			//$(selector).parent(filter) : 선택된 요소의 부모 요소를 반환 (filter 옵션 가능)											
+			$("li.2-1").parent('ul').css("background-color", "yellow");
+		});
+		$("#btnCase2").click(function(){
+			//$(selector).parents(filter) : 선택된 요소의 모든 상위 요소 반환 (filter 옵션 가능)
+			$("li.2-1").parents('ul').css("background-color", "green");
+		});
+		$("#btnCase3").click(function(){
+			//$(selector).parentsUntil(stop,filter) : selector와 stop사이의 요소를 반환
+			// 										: stop을 명시하지 않으면 최상위 요소까지 반환
+			$("li.2-1").parentsUntil("stop", '.2').css("background-color", "blue");
+		});
+		$("#btnCase4").click(function(){
+			//$(selector).closet(filter, context) : selector에 가장 가까이에 있는 상위 요소를 반환 (자신도 포함)
+			//									  : context로 범위 지정 가능 (context 불포함)
+			$("li.2-2-1").closest("ul", ".2-2-1").css("background-color", "yellow");
+		});
+	});
+	</script>
+</head>
+<body>
+	<button type="button" id="btnCase1">case1</button>
+	<button type="button" id="btnCase2">case2</button>
+	<button type="button" id="btnCase3">case3</button>
+	<button type="button" id="btnCase4">case4</button>
+	
+	<div id="divScript"></div>
+	<ul class="1" id="="one">
+
+		<li class="1">1</li>
+		<li class="2">2
+
+			<ul class="2-1">
+				<li class="2-1">2-1</li>
+				<li class="2-2">2-2
+
+					<ul class="2-2-1">
+						<li class="2-2-1">2-2-1</li>
+						<li class="2-2-2">2-2-2</li>
+						<li class="2-2-3">2-2-3</li>
+					</ul>
+				<li class="2-3">2-3</li>
+				</li>
+			</ul>
+		</li>
+		<li class="3">3</li>
+	</ul>
+</body>
+</html>

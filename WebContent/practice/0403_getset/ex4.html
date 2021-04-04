@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	//전체선택 체크박스 클릭 시 우측의 1~5번 체크 박스 선택되기
+	
+	$(document).ready(function(){						
+	
+		$("#AllCheck").click(function(){
+			//전체선택을 제외한 체크된 체크박스 개수
+			var n = $(":checkbox:checked").not("#AllCheck").length;
+			var status = $(this).prop("checked"); //AllCheck가 checked상태이면 true, 아니면 false
+	
+			if(status == true) {
+				$("input[name=num]").prop("checked", true);
+			}
+			else {
+				$("input[name=num]").prop("checked", false);
+			}
+
+		});
+		
+		$("input[name=num]").click(function(){
+			var num_status = $("input[name=num]").prop("checked");			
+			if(num_status == true){
+				$("#AllCheck").prop("checked", false);
+			}
+		})
+	});
+	</script>
+</head>
+<body>
+	<div>
+		<input type="checkbox" id="AllCheck" name="all">
+		<label for="AllCheck">전체선택</label>
+		
+		<input type="checkbox" id="one" name="num">
+		<label for="one">1</label>
+		
+		<input type="checkbox" id="two" name="num">
+		<label for="two">2</label>
+		
+		<input type="checkbox" id="three" name="num">
+		<label for="three">3</label>
+		
+		<input type="checkbox" id="four" name="num">
+		<label for="four">4</label>
+		
+		<input type="checkbox" id="five" name="num">
+		<label for="five">5</label>
+		
+	</div>
+</body>
+</html>

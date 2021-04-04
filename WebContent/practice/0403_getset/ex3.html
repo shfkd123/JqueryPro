@@ -6,15 +6,37 @@
 	<script src="../../js/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
 	//attr : 요소의 속성이나 정보(id, class, src, style, width)
+	//		 함수의 속성값을 가져오지 못하면 undefinded를 반환한다. 
+	//		"리스트: " +  $("sel").attr("selected") + "\n"
+	//				+ "val: " + $("#sel").val() + "\n";
+	//
+	
 	//prop : 요소가 가지는 실제적인 상태 (checked, selected, disabled, readonly, multople),
 	//		true/false로 반환하고 설정함.
-	$(document).ready(function(){
+		$(document).ready(function(){
 		$("#attr").click(function(){
-			var str = $("gender").val();
+			var str = "여성 체크여부: " + $("#genderwoman").attr("checked") + "\n"
+					+ "남성 체크여부: " + $("#genderman").attr("checked") + "\n"
+					+ "리스트: " +  $("sel").attr("selected") + "\n"
+					+ "리스트_val: " + $("#sel option:selected").val() + "\n"
+					+ "input_text: " + $("#readText").attr("readonly") + "\n"
+					+ "input_text_val: " + $("#readText").val() + "\n"
+					+ "버튼: " + $("#runBtn").attr("disabled") + "\n"
+					+ "버튼_val: " + $("#runBtn").val();
+				
 			alert(str);
 		});
 		$("#prop").click(function(){
-			
+			var str = "여성 체크여부: " + $("#genderwoman").prop("checked") + "\n"
+					+ "남성 체크여부: " + $("#genderman").prop("checked") + "\n"
+					+ "리스트: " +  $("sel").prop("selected") + "\n"
+					+ "리스트_val: " + $("#sel option:selected").val() + "\n"
+					+ "input_text: " + $("#readText").prop("readonly") + "\n"
+					+ "input_text_val: " + $("#readText").val() + "\n"
+					+ "버튼: " + $("#runBtn").prop("disabled") + "\n"
+					+ "버튼_val: " + $("#runBtn").val();
+		
+			alert(str);
 		});
 	});
 	</script>
@@ -23,18 +45,23 @@
 	<form>
 		<input type="radio" id="genderman" name="gender" value="남자">
  		<label for="genderman">남자</label>
+ 		
  		<input type="radio" id="genderwoman" name="gender" value="여자" checked="checked">
  		<label for="genderwoman">여자</label><br><br>
+ 		
  		<label for="sel">리스트박스</label> :
  		<select id="sel">
  			<option value="0">--선택--</option>
- 			<option value="1">1</option>
- 			<option value="2" selected="selected">2</option>
+ 			<option value="1" selected="selected">1</option>
+ 			<option value="2">2</option>
  		</select><br><br>
+ 		
  		<label for="readText">(readonly)</label> :
- 		<input type="text" id="readText" readonly="readonly"><br><br>
+ 		<input type="text" id="readText" readonly="readonly" value="readonly는 사용자가 값 수정 못함"><br><br>
+ 		
  		<label for="runBtn">(disabled)</label> :
  		<input type="button" id="runBtn" disabled="disabled" value="버튼">
+ 		
  		<button id="attr" type="button">attr확인</button>
  		<button id="prop" type="button">prop확인</button>
 	</form>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Form 상태 필터 예제</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#sendBtn").click(function(){
+			var result = "";
+			$("checkbox:checked").each(function(index){
+				if(index > 0){
+					result += ",";
+				}
+				result += $(this).val();
+			});
+			
+			alert(result);
+			$('#result').text(result);
+		});
+	});
+	</script>
+</head>
+<body>
+	<form>
+		취미 : 
+		<input type="checkbox" name="hobby" value="여행" id="travle">
+		<label for="travle">여행</label>
+		
+		<input type="checkbox" name="hobby" value="영화감상" id="movie">
+		<label for="movie">영화감상</label>
+		
+		<input type="checkbox" name="hobby" value="독서" id="reading">
+		<label for="reading">독서</label>
+		
+		<input type="checkbox" name="hobby" value="게임" id="game">
+		<label for="game">게임</label>
+		
+		<input type="checkbox" name="hobby" value="음악감상" id="music">
+		<label for="music">음악감상</label>
+		
+		<input type="checkbox" name="hobby" value="노래" id="sing">
+		<label for="sing">노래</label>
+		
+		<input type="checkbox" name="hobby" value="쇼핑"id="shopping">
+		<label for="shopping">쇼핑</label>
+	
+		<br><br>
+		<button type="button" id="sendBtn">전송</button>
+		<br><br>
+		<div>
+		선택결과 : <span id="result"></span>
+		</div>
+	</form>
+</body>
+</html>
