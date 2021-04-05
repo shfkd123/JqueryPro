@@ -43,6 +43,7 @@
 				for (var i = 0; i < objTmp.hobby.length; i++) {
 					strHobby += objTmp.hobby[i] + ", ";
 				}
+				//무술, 검술, 독서, --> 독서 뒤에 오는, 를 제거하기 위해 substr 
 				strHobby = strHobby.substr(0, strHobby.length-2);
 				$("#Hobby").text(strHobby);
 
