@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Json예제</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	var obj = {
+			   name: "홍길동" 
+			   ,birth: "1425-12-14" 
+			   ,age: 30 
+			   ,hobby: ["무술", "검술", "독서"]
+			   ,address: {
+				   city: "대전광역시"
+				   , gu : "중구"
+				   , dong : "대흥동" 
+			   } 
+			 }
+
+	$(document).ready(function(){
+		$("button").click(function(){
+			//1) 1차변환 (obj > str)
+				var strTmp = JSON.stringify(obj);
+				$("#spanFirst").text(strTmp);
+			//2) 2차변환 (str > obj)
+				var objTmp = JSON.parse(strTmp);
+				$("#spanSecond").text(objTmp);
+				// .html()이 아닌, text()로 표시할 것
+				
+				//화면에 표시하기 위해 다시 Object로 만드는 것!
+				$("#Name").text(objTmp.name);
+				//여기에서는 text말고 html을 써도 된다.
+				//$("#Name").html(objTmp.name);
+				
+				//이렇게하면 주소는 [object Object]로 나온다.
+				//$("#Add").text(objTmp.address);
+				//이렇게 바꿔준다.
+				$("#Add").text(objTmp.address.city + " " + objTmp.address.gu + " " + objTmp.address.dong);
+				
+				//취미를 //$("#Name").html(objTmp.hobby);
+				//이렇게 바꾸면 무술 검술 독서 ==> , 없이 나온다. 
+				var strHobby = "";
+				for (var i = 0; i < objTmp.hobby.length; i++) {
+					strHobby += objTmp.hobby[i] + ", ";
+				}
+				strHobby = strHobby.substr(0, strHobby.length-2);
+				$("#Hobby").text(strHobby);
+
+				//$("#Bir").text(objTmp.birth);
+				var date = new Date(objTmp.birth); 
+				$("#Bir").text(date);
+		});
+	});
+	
+	
+	</script>
+</head>
+<body>
+	<button type="button">JSON 변환 테스트</button>
+	<p>1차변환(obj > str) :<span id="spanFirst"></span></p>
+	<p>2차변환(str > obj) : <span id="spanSecond"></span></p>
+	<p>이름 : <span id="Name"></span></p>
+	<p>주소 : <span id="Add"></span></p>
+	<p>취미 : <span id="Hobby"></span></p>
+	<p>생년 월일 : <span id="Bir"></span></p>
+</body>
+</html>
