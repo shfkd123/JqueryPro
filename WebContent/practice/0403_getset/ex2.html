@@ -18,7 +18,8 @@
 			$("img").each(function(){
 				var src = $(this).attr("src");
 				var arr = src.split("/");
-				var fileName = arr[3];
+				var fileName = arr[3]; //앞에서
+								//arr.length-1 //뒤에서
 				$(this).attr("title", fileName);
 			});
 		});
