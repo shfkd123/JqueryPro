@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>안녕하세요, '<span id="spUserName">김민지</span>'씨.</p>
+	<br>
+	<p>올해로 '<span id="spUserAge">24</span>'살 이시군요~</p>
+</body>
+<script type="text/javascript">
+	
+	var userName = "";
+	var userAge = "";
+	
+	//window.location.href
+	var url = location.href;
+	var params = url.substr(url.indexOf("?")+1); //userName=아이유&userAge=25
+	var arr = params.split("&"); //[userName="아이유", userAge="25"]
+//	arr[0]; //"userName=아이유"
+//	arr[0].split("=");//["userName", "아이유"]
+	userName = decodeURI(arr[0].split("=")[1]);//"아이유"
+
+// 	arr[1]; //"userAge=25"
+// 	arr[1].split("="); //["userAge", "25"];
+	userAge = arr[1].split("=")[1]; //"25"
+	
+	document.getElementById("spUserName").innerHTML = userName;
+	document.getElementById("spUserAge").innerHTML = userAge;
+</script>
+</html>

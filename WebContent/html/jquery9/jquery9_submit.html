@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Submit_get방식 post방식</title>
+	<style>
+	 table td {
+	   border: 1px solid black;
+	 }
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>	
+</head>
+<body>
+	<form id="fm">
+		이름 : <input type="text" name="userName"><br>
+		나이 : <input type="text" name="userAge"><br><br>
+		<button type="submit">submit</button>
+		<button type="button" onclick="fnGet()">get버튼</button>
+		<button type="button" onclick="fnPost()">post버튼</button>
+		<hr>		
+	</form>
+	<div id="divResult"></div>
+</body>
+<script type="text/javascript">
+	function fnGet(){
+		var fm = document.getElementById("fm");
+		fm.action = "jquery9_submit_result.html";
+		fm.method = "get";
+		fm.submit();
+	}
+
+	function fnPost(){
+		var fm = document.getElementById("fm");
+		fm.action = "jquery9_submit_result.jsp";
+		fm.method = "post";
+		fm.submit();		
+	}
+</script>
+</html>
