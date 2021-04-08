@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		body {
+			background-color: #ffe997;
+		}
+		h3 {
+			background-color: #ffe997;
+			text-align: center;
+		}
+		span {
+			font-size: 1.5em;
+			font-family: fantasy;	
+		}		
+		input {
+			border: 2px solid #efc600;
+			background-color: #fff7dc;
+			border-radius: 5px;
+		}
+		#Search_btn {
+			border: 2px solid #efc600;
+			background-color: #fff7dc;
+			border-radius: 5px;
+		}
+		#Sign_up_btn {
+			border: 2px solid #efc600;
+			background-color: #fff7dc;
+			border-radius: 5px;
+		}
+		#s_if {
+			background-color: #fff7dc;
+		}
+		table {
+			border: 2px solid #efc600;
+			background-color: #fff7dc;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h3>회원목록</h3>
+	<!-- 검색조건 영역 -->
+	검색조건
+	<div id="s_if">
+		<span>ID </span><input type="text">
+		<span>Name </span><input type="text">
+		<button type="button" id="Search_btn"><span>Find</span></button>
+	</div>
+	
+	<!-- 검색결과 영역 -->
+	<div>
+		<table>
+			<tr>
+				<th>번호</th>
+				<th>ID</th>
+				<th>이름</th>
+				<th>전화번호</th>
+				<th>생년월일</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>	
+	</div>
+	
+	<!-- 영역 -->
+	<div>
+		<button type="button" id="Sign_up_btn"><span>Sign Up</span></button>
+	</div>
+</body>
+</html>
