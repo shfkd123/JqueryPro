@@ -5,13 +5,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>안녕하세요, '<span id="spUserName">김민지</span>'씨.</p>
+	<p>안녕하세요, '<span id="spUserName"></span>'씨.</p>
 	<br>
-	<p>올해로 '<span id="spUserAge">24</span>'살 이시군요~</p>
+	<p>올해로 '<span id="spUserAge"></span>'살 이시군요~</p>
 </body>
 <script type="text/javascript">
 	
-	var userName = "";
+ 	/* var userName = "";
 	var userAge = "";
 	
 	//window.location.href
@@ -27,6 +27,21 @@
 	userAge = arr[1].split("=")[1]; //"25"
 	
 	document.getElementById("spUserName").innerHTML = userName;
-	document.getElementById("spUserAge").innerHTML = userAge;
+	document.getElementById("spUserAge").innerHTML = userAge; */
+	
+	var strUrl = location.href;
+    var strKey = strUrl.substr(strUrl.indexOf("?")+1); //userID=id123&userPW=ud123&userName=김민지&userAge=24
+    var arr = strKey.split("&"); //[userID="id123", userPW="ud123", userName="김민지", userAge="24"];
+    
+    var tmp = "";
+    var tmp2 = "";
+    for (var i = 0; i < arr.length; i++) {
+		tmp = arr[i].split("=");		
+	}
+	for (var j = 0; j < arr.length; j++) {
+		tmp2 = arr[j].split("=");		
+		console.log(tmp2);
+	}
+    
 </script>
 </html>

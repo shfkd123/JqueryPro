@@ -1,13 +1,24 @@
 /**
  * 
  */
-// strUrl => http://localhost:9090/JqueryPro/html/jqeury9/jquery9_submit.html
+//strUrl => http://localhost:9090/JqueryPro/html/jqeury9/jquery9_submit.html
 //strKey => "userId"
-function getValue(strUrl, strKey){
-   var val ="";
-   //strUrl 에서 strKey에 해당하는 값을  추출해서
-   val = "~";
-   return val;
+
+
+function getValue(strUrl, strKey){ //url 주소 , key 찾고싶은 것 (userID, userPW, userName, userAge)
+
+    var urlIndexOf = strUrl.substr(strUrl.indexOf("?")+1); //userID=id123&userPW=ud123&userName=김민지&userAge=24
+    var arr = urlIndexOf.split("&"); //[userID="id123", userPW="ud123", userName="김민지", userAge="24"];
+    
+    var tmp = ""; var tmp2 = "";
+    for (var i = 0; i < arr.length; i++) {
+		tmp = arr[i].split("=");		
+	}
+	for (var j = 0; j < 4; j++) {
+		tmp2 = arr[j].split("=");		
+	}
+	
+	return tmp2;
 }
 
 function isEmpty(val){
