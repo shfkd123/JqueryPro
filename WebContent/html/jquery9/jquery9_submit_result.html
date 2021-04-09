@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/common/myUtil.js"></script>
 </head>
 <body>
 	<p>안녕하세요, '<span id="spUserName"></span>'씨.</p>
@@ -29,19 +30,18 @@
 	document.getElementById("spUserName").innerHTML = userName;
 	document.getElementById("spUserAge").innerHTML = userAge; */
 	
-	var strUrl = location.href;
-    var strKey = strUrl.substr(strUrl.indexOf("?")+1); //userID=id123&userPW=ud123&userName=김민지&userAge=24
-    var arr = strKey.split("&"); //[userID="id123", userPW="ud123", userName="김민지", userAge="24"];
-    
-    var tmp = "";
-    var tmp2 = "";
-    for (var i = 0; i < arr.length; i++) {
-		tmp = arr[i].split("=");		
+	var strUrl = location.href;	
+	var strKey = "";
+	getValue(strUrl, strKey);
+	
+	var Key = "";
+	for (var i = 0; i < strKey.length; i++) {
+		Key = strKey[i];
+		console.log(key);
 	}
-	for (var j = 0; j < arr.length; j++) {
-		tmp2 = arr[j].split("=");		
-		console.log(tmp2);
-	}
+	 
+	document.getElementById("spUserName").innerHTML = strKey;
+	document.getElementById("spUserAge").innerHTML = strKey;
     
 </script>
 </html>
