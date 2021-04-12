@@ -14,9 +14,21 @@ public class MemberDao extends BaseDao {
 	public MemberDao() {
 		smc = super.getSqlMapClient();
 	}
+
+	public MemberVO retrieveMember(String memId) throws SQLException {
+		//queryForObject - 한건
+		//queryForList - 여러건 
+		return (MemberVO) smc.queryForObject("member.retrieveMember", memId); //namespace.id
+		
+	}
 	
 	public List<MemberVO> retrieveMemberList(MemberVO memberVo) throws SQLException {
 		return smc.queryForList("member.retrieveMemberList", memberVo);
 	}
-	
+
+	public void createMember(MemberVO memberVo) throws SQLException {
+		smc.insert("member.createMember", memberVo); //1번 파라미터 호출된 쿼리 아이디.
+		
+	}
+
 }

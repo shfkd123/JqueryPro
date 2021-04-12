@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
    <script src="../../js/jquery-3.6.0.js"></script>
+   <script type="text/javascript" src="/JqueryPro/js/member/memberList.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
    <style type="text/css">
    div, button {padding: 0px; margin: 10px;}
@@ -13,30 +14,8 @@
 /*        border: 1px solid; */
    }
    </style>
-   <script src="../../js/jquery-3.6.0.js"></script>
-   <script type="text/javascript">
-      $(document).ready(function(){
-         $("#btnSearch").click(function(){
-            $.ajax({
-               url : "/JqueryPro/MemberServlet"
-               ,type : "post"
-               ,data : ""
-               ,dataType : "json"
-               ,success : function(data){
-                  console.log(data);
-                  alert("성공");
-                  //
-               }
-               ,error : function(xhr){
-                  console.log(xhr);
-                  alert("오류발생");
-               }
-            });
-            
-         });
-         
-      });
-   </script>
+ 
+
 </head>
 <body>
    <div>
@@ -45,11 +24,11 @@
          <div class="row">
             <div class="search col-xs-5">
                <label>ID</label>
-               <input type="text">
+               <input type="text" id="userId">
             </div>
             <div class="search col-xs-5">
                <label>이름</label>
-               <input type="text">
+               <input type="text" id="userName">
             </div>
             <div class="search-btn col-xs-2">
                <button type="button">초기화</button>
@@ -58,18 +37,28 @@
          </div>
       </div>
       <div class="result">
-      목록
-         <table style="border: 1px solid; width: 100%;">
-            <tr>
-               <td>ID</td>
-               <td>이름</td>
-            </tr>
-            <tr>
-               <td>iu</td>
-               <td>아이유</td>
-            </tr>
-         </table>
-      </div>
+		목록
+			<table style="border: 1px solid; width: 100%;" id="tbResult">
+				<colgroup>
+					<col style="width: 100px;">
+					<col style="width: auto;">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>이름</th>
+						<th>성별</th>
+						<th>생년월일</th>
+						<th>전화번호</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2">검색 버튼을 클릭하세요</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
       <div class="bottom">
          <button type="button">신규등록</button>
       </div>
