@@ -1,69 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap
-	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
-	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+   PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+   "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="member">
-	<!-- 회원정보 등록 -->
-	<insert id="createMember" parameterClass="kr.or.ddit.member.vo.MemberVO">
-		INSERT INTO TB_MEMBER (
-		MEM_ID
-		,MEM_PASS
-		,MEM_NAME
-		,MEM_BIR
-		,MEM_ZIP
-		,MEM_ADD1
-		,MEM_ADD2
-		,MEM_HP
-		,MEM_MAIL
-		,RECV_EMAIL_YN
-		,MEM_JOB
-		,MEM_LIKE
-		,MEM_MEMORIAL_TYPE
-		,MEM_MEMORIAL_DATE
-		,MEM_MILEAGE
-		,MEM_COMMENT
-		,MEM_DELETE
-	) VALUES(
-	<!-- ctrl + shift + y 소문자 // ctrl + shift + x 대문자-->
-		#memId#
-		,#memPass#
-		,#memName#
-		,#memBir#
-		,#memZip#
-		,#memAdd1#
-		,#memAdd2#
-		,#memHp#
-		,#memMail#
-		,#recvEmailYn#
-		,#memJob#
-		,#memLike#
-		,#memMemorialType#
-		,#memMemorialDate#
-		,#memMileage#
-		,#memComment#
-		,#memDelete#
-		)
-	</insert>
-	
-	<!-- 회원정보 갱신 -->
-	<update id="updateMember"></update>
-	
-	<!-- memId로 검색  -->
-	<select id="retrieveMember" parameterClass="String">
-		SELECT *
-		FROM TB_MEMBER
-		WHERE MEM_ID = #memId#
-		<isEmpty property="memName"> <!--  memName이 빈값이 아닐 때 이 쿼리를 넣어주세요!-->
-		AND MEM_NAME = #memName#
-		</isEmpty>
-	</select>
-
-	<select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
-		SELECT MEM_ID                memId             
+   <!-- 회원정보 등록 -->
+   <insert id="createMember" parameterClass="kr.or.ddit.member.vo.MemberVO">
+      INSERT INTO TB_MEMBER (
+      MEM_ID
+      ,MEM_PASS
+      ,MEM_NAME
+      ,MEM_BIR
+      ,MEM_ZIP
+      ,MEM_ADD1
+      ,MEM_ADD2
+      ,MEM_HP
+      ,MEM_MAIL
+      ,RECV_EMAIL_YN
+      ,MEM_JOB
+      ,MEM_LIKE
+      ,MEM_MEMORIAL_TYPE
+      ,MEM_MEMORIAL_DATE
+      ,MEM_MILEAGE
+      ,MEM_COMMENT
+      ,MEM_DELETE
+   ) VALUES(
+   <!-- ctrl + shift + y 소문자 // ctrl + shift + x 대문자-->
+      #memId#
+      ,#memPass#
+      ,#memName#
+      ,#memBir#
+      ,#memZip#
+      ,#memAdd1#
+      ,#memAdd2#
+      ,#memHp#
+      ,#memMail#
+      ,#recvEmailYn#
+      ,#memJob#
+      ,#memLike#
+      ,#memMemorialType#
+      ,#memMemorialDate#
+      ,#memMileage#
+      ,#memComment#
+      ,#memDelete#
+      )
+   </insert>
+   
+   <!-- 회원정보 갱신 -->
+   <update id="updateMember"></update>
+   
+   <!-- memId로 검색  -->
+   <select id="retrieveMember" parameterClass="String">
+      SELECT MEM_ID                memId             
              , MEM_PASS              memPass           
              , MEM_NAME              memName           
-             , MEM_BIR               memBir            
+             , TO_CHAR(MEM_BIR, 'YYYY-MM-DD')               memBir            
              , MEM_ZIP               memZip            
              , MEM_ADD1              memAdd1           
              , MEM_ADD2              memAdd2           
@@ -76,15 +67,44 @@
              , MEM_MEMORIAL_DATE     memMemorialDate  
              , NVL(MEM_MILEAGE, 0)   memMileage        
              , MEM_COMMENT           memComment        
-             , MEM_DELETE            memDelete         
-          FROM TB_MEMBER
+             , MEM_DELETE            memDelete 
+      FROM TB_MEMBER
+      WHERE MEM_ID = #memId#
+      <isEmpty property="memName"> <!--  memName이 빈값이 아닐 때 이 쿼리를 넣어주세요!-->
+      AND MEM_NAME = #memName#
+      </isEmpty>
+   </select>
+
+   <select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
+      SELECT A.MEM_ID                memId             
+             , A.MEM_PASS              memPass           
+             , A.MEM_NAME              memName           
+             , TO_CHAR(A.MEM_BIR, 'YYYY-MM-DD')  memBir            
+             , A.MEM_ZIP               memZip            
+             , A.MEM_ADD1              memAdd1           
+             , A.MEM_ADD2              memAdd2           
+             , A.MEM_HP                memHp             
+             , A.MEM_MAIL              memMail           
+             , A.RECV_EMAIL_YN         recvEmailYn      
+             , A.MEM_JOB               memJob
+             , B.CODE_NAME             memJobName            
+             , A.MEM_LIKE              memLike           
+             , A.MEM_MEMORIAL_TYPE     memMemorialType  
+             , A.MEM_MEMORIAL_DATE     memMemorialDate  
+             , NVL(A.MEM_MILEAGE, 0)   memMileage        
+             , A.MEM_COMMENT           memComment        
+             , A.MEM_DELETE            memDelete         
+          FROM TB_MEMBER A
+                , TB_CODE B
          WHERE 1=1
+         AND B.GROUP_CODE(+) ='A02'
+       AND A.MEM_JOB = B.CODE(+)
          <isNotEmpty property="memId"> <!-- memId가 빈값이 아닐 때 이 쿼리를 넣어주세요!(동적쿼리) -->
          AND MEM_ID = #memId#
          </isNotEmpty>
          <isNotEmpty property="memName" prepend="AND"> <!-- 동적쿼리를 수행하면서 AND를 넣어주세요. -->
          MEM_NAME = #memName#
          </isNotEmpty>
-	</select>
-	
+   </select>
+   
 </sqlMap>

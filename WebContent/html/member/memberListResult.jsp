@@ -16,11 +16,21 @@ for(int i=0; i<list.size(); i++){
 	String memName = vo.getMemName();
 	
 	//json 타입으로 만들어야 하는 부분 ==> {"name" : "~", "id" : "~"}
+	
+	//번호, id, 이름, 비밀번호, 생년월일, 전화번호, 메일, 직업
+	
 	if(i>0){
 		%>,<%
 	}
 	%>
-	{"name" : "<%=memName %>", "id" : "<%=memId%>"}
+	{	"memName" : "<%=memName %>"
+		, "memId" : "<%=memId%>"
+		, "memPass" : "<%=vo.getMemPass()%>"
+		, "memBir" : "<%=vo.getMemBir()%>"
+		, "memHp" : "<%=vo.getMemHp()%>"
+		, "memMail" : "<%=vo.getMemMail()%>"
+		, "memJobName" : "<%=vo.getMemJobName()%>"
+	}
 	<%
 }
 %>

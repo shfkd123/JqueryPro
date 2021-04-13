@@ -50,11 +50,27 @@ public class MemberServlet extends HttpServlet {
 		else if("D".equals(flag)) { //삭제
 			
 		}
+		else if("CHKID".equals(flag)) { //ID체크
+			MemberVO memberVo = checkMemberId(req);
+			
+			req.setAttribute("memberVo", memberVo);
+			RequestDispatcher disp = req.getRequestDispatcher("/html/member/idCheckResult.jsp");
+			disp.forward(req, resp);
+		}
 	} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	private MemberVO checkMemberId(HttpServletRequest req) throws SQLException {
+		String memId = req.getParameter("memId");
+		
+		MemberService service = new MemberService();
+		MemberVO memberVo = service.retrieveMember(memId);
+		return memberVo;
+		
+	}
+
 	private void createMember(HttpServletRequest req) throws SQLException {
 		String memId = req.getParameter("memId");
 		String memName = req.getParameter("memName");
