@@ -18,6 +18,8 @@ public class MemberService {
 	public MemberVO retrieveMember(String memberId) throws SQLException {
 		//Alt + Shift + R 
 		MemberVO memberVo = dao.retrieveMember(memberId);
+		
+		//원래는 서비스에서도  id값이 입력되었는지, 유효한지도 확인한다. jsp에서도
 		return memberVo;
 	}
 	

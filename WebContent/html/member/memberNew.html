@@ -7,40 +7,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="../../js/common/myUtils.js"></script>
 </head>
 <body>
-<!-- Modal -->
-			<div class="modal fade" id="myModal" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">주소 검색</h4>
-						</div>
-						<div class="modal-body">
-							 시: <select>
-								<option>선택하세요</option>
-							</select>
-							 구: <select>
-								<option>선택하세요</option>
-							</select>
-							 동: <select>
-								<option>선택하세요</option>
-							</select>
-							 <button type="button">검색</button>
-							
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">닫기</button>
-						</div>
-					</div>
-
-				</div>
-			</div>
-	<!--Modal End-->
 	
 	<div class="container">
 		<h2>회원등록화면</h2>
@@ -50,6 +19,7 @@
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="userID"
 						placeholder="Enter userID" name="userID">
+					<button type="button" onclick="checkId()">중복체크</button>
 						<span id="spMemId"></span>
 				</div>
 			</div>
@@ -108,7 +78,7 @@
 					<!-- <input type="text" class="form-control" id="userJob"
 						placeholder="Enter userJob" name="userJob"> -->
 						<select class="form-control" id="userJob" name="userJob">
-							<option></option>
+							
 						</select>
 				</div>
 			</div>
@@ -150,5 +120,144 @@
 			</div>
 		</form>
 	</div>
+	
+	
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">주소 검색</h4>
+				</div>
+				<div class="modal-body">
+					 시: <select>
+						<option>선택하세요</option>
+					</select>
+					 구: <select>
+						<option>선택하세요</option>
+					</select>
+					 동: <select>
+						<option>선택하세요</option>
+					</select>
+					 <button type="button">검색</button>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default"
+						data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!--Modal End-->
+	
 </body>
+
+<script type="text/javascript">
+function makeJobSelect(data){
+/* 	//방법1) 
+	var strHtml = "";
+	$("#userJob").html(strHtml); // <select>
+	
+	//방법2)
+	$("#userJob").empty();
+	$("#userJob").append(ele1);
+	$("#userJob").append(ele2); */
+	
+	var strHtml = "";
+	for (var i = 0; i < data.length; i++) {
+		strHtml += '<option value="' + data[i].value + '">' + data[i].name + '</option>';
+	//만들어야 하는 모양
+	//<option value="07">군인</option>
+
+	//가지고 오는 데이터 형태 	
+	//	[
+	//	 {"value" : "07", "name" : "군인"}
+	//	 ,{"value" : "08", "name" : "전업주부"}
+	//	]	
+	}
+	$("#userJob").html(strHtml); 
+	
+}
+//직업코드 조회해서 세팅하기
+$.ajax({
+	url : "/JqueryPro/CodeServlet"
+	,type : "post"
+	,data : {"groupCode" : 'A02'} //직업코드 조회      
+	,dataType : "json"
+	,success : function(data){
+		console.log(data);
+ 
+	makeJobSelect(data);
+
+	}
+	,error : function(xhr){
+		console.log(xhr);
+		alert("오류발생");
+	}
+		
+});
+
+function checkId(){
+	var userId = $("#userID").val();
+	// id값이 입력이 되었는지 확인
+	
+	//isEmpty(userId);
+	//consloe.log(1);
+	//console.log(isEmpty(userId));
+	if(isEmpty(userId) == true){
+		alert("id가 입력되지 않았습니다.");
+		$("#userID").focus();
+	}
+	// id값이 유효한지 확인
+	if(chkRegExp(userId, "userId") == false){
+		alert("id값이 유효하지 않습니다.");
+	}
+	
+	
+	// 기등록된 id가 있는지 확인
+// 	var param = {"memId" : userId, "flag" : "CHKID"};
+	var param = {memId : userId, flag : "CHKID"};
+	
+	$.ajax({
+		url : "/JqueryPro/MemberServlet"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+			console.log(data);
+			//{"resultCnt" : "0"}
+			//{"resultCnt" : "1
+				
+				
+				
+				
+				
+				
+				"}
+// 			data.resultCnt ==> "0"/"1"
+			
+			if(data.resultCnt == 0){
+				// 중복된  ID가 아니면
+				alert("사용가능한  ID 입니다.");
+			} else {
+				// 중복된  ID이면
+				//alert("중복된 ID 입니다.");
+				$("#userID").focus();
+				$("#spMemId").text("중복된 ID 입니다.");
+				$("#spMemId").show();
+			}
+			
+		}
+		,error : function(xhr){
+			console.log(xhr);
+		}
+
+		});
+	}
+</script>
 </html>

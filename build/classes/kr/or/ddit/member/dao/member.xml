@@ -49,12 +49,12 @@
    <!-- 회원정보 갱신 -->
    <update id="updateMember"></update>
    
-   <!-- memId로 검색  -->
-   <select id="retrieveMember" parameterClass="String">
+   <!-- memId로 검색  --> <!-- resultClass 쿼리 수행 값이 들어간다.-->
+   <select id="retrieveMember" parameterClass="String" resultClass="kr.or.ddit.member.vo.MemberVO">
       SELECT MEM_ID                memId             
              , MEM_PASS              memPass           
              , MEM_NAME              memName           
-             , TO_CHAR(MEM_BIR, 'YYYY-MM-DD')               memBir            
+             , TO_CHAR(MEM_BIR, 'YYYY-MM-DD') memBir            
              , MEM_ZIP               memZip            
              , MEM_ADD1              memAdd1           
              , MEM_ADD2              memAdd2           
@@ -70,11 +70,9 @@
              , MEM_DELETE            memDelete 
       FROM TB_MEMBER
       WHERE MEM_ID = #memId#
-      <isEmpty property="memName"> <!--  memName이 빈값이 아닐 때 이 쿼리를 넣어주세요!-->
-      AND MEM_NAME = #memName#
-      </isEmpty>
    </select>
 
+	
    <select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
       SELECT A.MEM_ID                memId             
              , A.MEM_PASS              memPass           

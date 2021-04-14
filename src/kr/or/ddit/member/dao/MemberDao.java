@@ -30,5 +30,5 @@ public class MemberDao extends BaseDao {
 		smc.insert("member.createMember", memberVo); //1번 파라미터 호출된 쿼리 아이디.
 		
 	}
-
+	
 }
