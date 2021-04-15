@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="../../js/common/myUtils.js"></script>
+<script src="../../js/member/memberNew.js"></script>
 </head>
 <body>
 	
@@ -19,7 +21,7 @@
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="userID"
 						placeholder="Enter userID" name="userID">
-					<button type="button" onclick="checkId()">중복체크</button>
+					<button type="button" class="btn btn-info default" onclick="checkId()" style="margin-top: 8px;">중복체크</button>
 						<span id="spMemId"></span>
 				</div>
 			</div>
@@ -59,50 +61,58 @@
 				</div>
 			</div>
 
-	<div class="form-group">
-				<label class="control-label col-sm-2" for="MEM_ZIP">주소:</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-inline" id="MEM_ZIP"
-						placeholder="" name="MEM_ZIP">
-					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">검색</button>
-					<input type="text" class="form-inline" id="MEM_ZIP"
-						placeholder="" name="MEM_ZIP">
-					<input type="text" class="form-control" id="MEM_ZIP"
-						placeholder="상세주소를 입력하세요" name="MEM_ZIP">
-				</div>
+			<div class="form-inline">
+			<label class="control-label col-sm-2" for="MEM_ZIP">주소:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="MEM_ZIP"
+					placeholder="" name="MEM_ZIP">
+				<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">검색</button>
+				<input type="text" class="form-control" id="MEM_Gugun"
+					placeholder="" name="MEM_ZIP"><br>
+				<input type="text" class="form-control" id="MEM_Dong"
+					placeholder="상세주소를 입력하세요" name="MEM_ZIP" style="margin-top: 8px; margin-bottom: 15px;">
 			</div>
 
+			</div>
+			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="userJob">직업:</label>
 				<div class="col-sm-10">
-					<!-- <input type="text" class="form-control" id="userJob"
-						placeholder="Enter userJob" name="userJob"> -->
 						<select class="form-control" id="userJob" name="userJob">
 							
 						</select>
 				</div>
 			</div>
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="userJob">기념일:</label>
+				<label class="control-label col-sm-2" for="AnnDay">기념일:</label>
 				<div class="col-sm-10">
-						종류 : <select class="form-inline" id="userJob" name="userJob">
-							<option></option>		
+						종류 : <select class="form-inline" id="AnnDay" name="AnnDay">	
+						
 						</select>
-						날짜 : <input type="text" class="form-inline" id="dday"
+						날짜 : <input type="date" class="form-inline" id="dday"
 						placeholder="Enter dday" name="dday">
 				</div>
 			</div>
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="userLike">취미:</label>
+				<label class="control-label col-sm-2" for="userLike" id="userLike">취미:</label>
+				<div class="col-sm-10" id="Hobby">
+		
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="recvEmail">광고메일:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="userLike" name="userLike">
+						<label class="radio-inline"><input type="radio" name="recvEmailYnN" >수신</label>
+						<label class="radio-inline"><input type="radio" name="recvEmailYnN" checked="checked">미수신</label>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="userLike">비고:</label>
+				<label class="control-label col-sm-2" for="content">비고:</label>
 				<div class="col-sm-10">
-					<!-- <input type="text" class="form-control" id="userLike" name="userLike"> -->
-					<textarea rows="10" cols="20" class="form-control" id="userLike" name="userLike"></textarea>
+					<textarea rows="10" cols="20" class="form-control" id="content" name="content"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
@@ -133,14 +143,14 @@
 					<h4 class="modal-title">주소 검색</h4>
 				</div>
 				<div class="modal-body">
-					 시: <select>
-						<option>선택하세요</option>
+					 시: <select id="city" onchange="setGu()">
+					
 					</select>
-					 구: <select>
-						<option>선택하세요</option>
+					 구: <select id="gu" onchange="setdong()" disabled="disabled">
+						
 					</select>
-					 동: <select>
-						<option>선택하세요</option>
+					 동: <select id="dong" disabled="disabled">
+				
 					</select>
 					 <button type="button">검색</button>
 					
@@ -156,108 +166,4 @@
 	<!--Modal End-->
 	
 </body>
-
-<script type="text/javascript">
-function makeJobSelect(data){
-/* 	//방법1) 
-	var strHtml = "";
-	$("#userJob").html(strHtml); // <select>
-	
-	//방법2)
-	$("#userJob").empty();
-	$("#userJob").append(ele1);
-	$("#userJob").append(ele2); */
-	
-	var strHtml = "";
-	for (var i = 0; i < data.length; i++) {
-		strHtml += '<option value="' + data[i].value + '">' + data[i].name + '</option>';
-	//만들어야 하는 모양
-	//<option value="07">군인</option>
-
-	//가지고 오는 데이터 형태 	
-	//	[
-	//	 {"value" : "07", "name" : "군인"}
-	//	 ,{"value" : "08", "name" : "전업주부"}
-	//	]	
-	}
-	$("#userJob").html(strHtml); 
-	
-}
-//직업코드 조회해서 세팅하기
-$.ajax({
-	url : "/JqueryPro/CodeServlet"
-	,type : "post"
-	,data : {"groupCode" : 'A02'} //직업코드 조회      
-	,dataType : "json"
-	,success : function(data){
-		console.log(data);
- 
-	makeJobSelect(data);
-
-	}
-	,error : function(xhr){
-		console.log(xhr);
-		alert("오류발생");
-	}
-		
-});
-
-function checkId(){
-	var userId = $("#userID").val();
-	// id값이 입력이 되었는지 확인
-	
-	//isEmpty(userId);
-	//consloe.log(1);
-	//console.log(isEmpty(userId));
-	if(isEmpty(userId) == true){
-		alert("id가 입력되지 않았습니다.");
-		$("#userID").focus();
-	}
-	// id값이 유효한지 확인
-	if(chkRegExp(userId, "userId") == false){
-		alert("id값이 유효하지 않습니다.");
-	}
-	
-	
-	// 기등록된 id가 있는지 확인
-// 	var param = {"memId" : userId, "flag" : "CHKID"};
-	var param = {memId : userId, flag : "CHKID"};
-	
-	$.ajax({
-		url : "/JqueryPro/MemberServlet"
-		,type : "post"
-		,data : param
-		,dataType : "json"
-		,success : function(data){
-			console.log(data);
-			//{"resultCnt" : "0"}
-			//{"resultCnt" : "1
-				
-				
-				
-				
-				
-				
-				"}
-// 			data.resultCnt ==> "0"/"1"
-			
-			if(data.resultCnt == 0){
-				// 중복된  ID가 아니면
-				alert("사용가능한  ID 입니다.");
-			} else {
-				// 중복된  ID이면
-				//alert("중복된 ID 입니다.");
-				$("#userID").focus();
-				$("#spMemId").text("중복된 ID 입니다.");
-				$("#spMemId").show();
-			}
-			
-		}
-		,error : function(xhr){
-			console.log(xhr);
-		}
-
-		});
-	}
-</script>
 </html>
