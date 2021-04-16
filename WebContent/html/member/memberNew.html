@@ -15,12 +15,12 @@
 	
 	<div class="container">
 		<h2>회원등록화면</h2>
-		<form class="form-horizontal" action="/action_page.php">
+		<form class="form-horizontal" action="/action_page.php" id="fm">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="email">ID:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="userID"
-						placeholder="Enter userID" name="userID">
+						placeholder="Enter userID" name="memId">
 					<button type="button" class="btn btn-info default" onclick="checkId()" style="margin-top: 8px;">중복체크</button>
 						<span id="spMemId"></span>
 				</div>
@@ -29,35 +29,35 @@
 				<label class="control-label col-sm-2" for="email">PW:</label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" id="userPW"
-						placeholder="Enter userPW" name="userPW">
+						placeholder="Enter userPW" name="memPass">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="email">이름:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="userName"
-						placeholder="Enter userName" name="userName">
+						placeholder="Enter userName" name="memName">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="userBir">생년월일:</label>
 				<div class="col-sm-10">
 					<input type="date" class="form-control" id="userBir"
-						placeholder="Enter userBir" name="userBir">
+						placeholder="Enter userBir" name="memBir">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="userEmail">이메일:</label>
 				<div class="col-sm-10">
 					<input type="email" class="form-control" id="userEmail"
-						placeholder="Enter userEmail" name="userEmail">
+						placeholder="Enter userEmail" name="memMail">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="userHP">핸드폰번호:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="userHP"
-						placeholder="Enter userHP" name="userHP">
+						placeholder="Enter userHP" name="memHp">
 				</div>
 			</div>
 
@@ -65,8 +65,14 @@
 			<label class="control-label col-sm-2" for="MEM_ZIP">주소:</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="MEM_ZIP"
-					placeholder="" name="MEM_ZIP">
+					placeholder="" name="memZip">
+
+<!-- 모달창 검색 방법 1) -->				
 				<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">검색</button>
+
+<!-- 모달창 검색 방법 2) -->
+			<!-- 	<button type="button" class="btn btn-info btn-sm" onclick="openZip()">검색</button> -->
+				
 				<input type="text" class="form-control" id="MEM_Gugun"
 					placeholder="" name="MEM_ZIP"><br>
 				<input type="text" class="form-control" id="MEM_Dong"
@@ -78,7 +84,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="userJob">직업:</label>
 				<div class="col-sm-10">
-						<select class="form-control" id="userJob" name="userJob">
+						<select class="form-control" id="userJob" name="memJob">
 							
 						</select>
 				</div>
@@ -87,23 +93,23 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="AnnDay">기념일:</label>
 				<div class="col-sm-10">
-						종류 : <select class="form-inline" id="AnnDay" name="AnnDay">	
+						종류 : <select class="form-inline" id="AnnDay" name="memMemorialType">	
 						
 						</select>
 						날짜 : <input type="date" class="form-inline" id="dday"
-						placeholder="Enter dday" name="dday">
+						placeholder="Enter dday" name="memMemorialDate">
 				</div>
 			</div>
 			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="userLike" id="userLike">취미:</label>
+				<label class="control-label col-sm-2" for="userLike" id="userLike" name="memLike">취미:</label>
 				<div class="col-sm-10" id="Hobby">
 		
 				</div>
 			</div>
 			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="recvEmail">광고메일:</label>
+				<label class="control-label col-sm-2" for="recvEmail" name="recvEmailYn">광고메일:</label>
 				<div class="col-sm-10">
 						<label class="radio-inline"><input type="radio" name="recvEmailYnN" >수신</label>
 						<label class="radio-inline"><input type="radio" name="recvEmailYnN" checked="checked">미수신</label>
@@ -112,27 +118,27 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="content">비고:</label>
 				<div class="col-sm-10">
-					<textarea rows="10" cols="20" class="form-control" id="content" name="content"></textarea>
+					<textarea rows="10" cols="20" class="form-control" id="content" name="memComment"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<div class="checkbox">
-						<label><input type="checkbox" name="remember">
-							Remember me</label>
+						<label><input type="checkbox" name="remember">Remember me</label>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default" onclick="save()">Submit</button>
 				</div>
 			</div>
+			<input type="hidden" name="flag" id="formFlag">
 		</form>
 	</div>
 	
 	
-	<!-- Modal -->
+	<!-- 우편번호 검색  Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
@@ -146,14 +152,26 @@
 					 시: <select id="city" onchange="setGu()">
 					
 					</select>
-					 구: <select id="gu" onchange="setdong()" disabled="disabled">
+					 구: <select id="gu" onchange="setDong()">
 						
 					</select>
-					 동: <select id="dong" disabled="disabled">
+					 동: <select id="dong">
 				
 					</select>
-					 <button type="button">검색</button>
-					
+					 <button type="button" onclick="searchZipCode()" id="btnZip">검색</button>
+					<hr>
+					<div id="divZipResult">
+						<table class="table table-striped" id="tbZipResult">
+						  <thead>
+						    <tr>
+						      <th>우편번호</th>
+						      <th>주소</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  </tbody>
+						</table>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default"

@@ -42,15 +42,16 @@
  * @param val
  * @returns
  */  
-   function isEmpty(val){
-         if (val == "") return true; //빈값이면 true
-         if (val == null) return true;
-         if (val == undifined) return true; 
-         
-         val = jQuery.trim(val); 
-         if (val.lenght == 0) return false; //빈값이 아니면 false
-   }     
-      
+  function isEmpty(val) {
+		if(val == undefined) return true;
+		if(val == null) return true;
+		if(val == "null") return true;
+		
+		val = jQuery.trim(val);
+		if(val.length == 0) return true;
+		
+		return false;
+	}
       
    function chkRegExp(val, type){
 	   var min, max;

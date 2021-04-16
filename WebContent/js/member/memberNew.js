@@ -14,6 +14,24 @@ $(document).ready(function(){
 	
 	//5. 우편번호 찾기 화면-시 세팅
 	initCitySelect();
+	
+	$("#tbZipResult").on("dbclick", "tbody tr", function(){
+		//this ==> tr
+		var zipcode = $(this).children("td:eq(0)").text();
+		var addr = $(this).children("td:eq(1)").text();
+		//console.log($(this));--> console.log(zipcode); 
+		//console.log($(this).children()); ---> console.log(addr);
+		
+		//메인화면(부모창)의 우편번호, 주소 input에 데이터 세팅
+		$("#MEM_ZIP").val(zipcode);
+		$("#MEM_Gugun").val(addr);
+		
+		//주소창 (모달창) 닫기
+		$("#zipModal").modal("hide");
+	});
+
+});
+
 
 function initJobSelect(){
 //직업코드 조회해서 세팅하기
@@ -50,7 +68,7 @@ function makeJobSelect(data){
 	$("#userJob").append(ele1);
 	$("#userJob").append(ele2); */
 	
-	var strHtml = "";
+	var strHtml = '<option value="">선택하세요</option>';
 	for (var i = 0; i < data.length; i++) {
 		strHtml += '<option value="' + data[i].value + '">' + data[i].name + '</option>';
 	//만들어야 하는 모양
@@ -129,38 +147,36 @@ function makeHobbyCheck(data) {
 }
 
 function initCitySelect() {
-	//직업코드 조회해서 세팅하기
-//	var param = {
-//	"sidocode" : 'sido'
-//};
+	var param = {
+			'flag' : 'SI'
+	}
 	$.ajax({
 		url : "/JqueryPro/ZipServlet",
 		type : "post",
-//		data : param, 
+		data : param, 
 		dataType : "json",
 		success : function(data) {
 			console.log(data);
-	
 			makeCitySelect(data);
-	
 		}
-	,error : function(xhr){
-		console.log(xhr);
-		alert("오류발생");
-	}
+		,error : function(xhr){
+			console.log(xhr);
+			alert("오류발생");
+		}
 	
 	});
 }
-
+	
 function makeCitySelect(data) {
 	var strHtml = '<option value="">선택하세요</option>';
 	for (var i = 0; i < data.length; i++) {
 		strHtml += '<option value="' + data[i].sido + '">' + data[i].sido + '</option>';
 	}
 	$("#city").html(strHtml); 
-
-// 방법2)	
-// setGu();
+	
+	setGu();
+	
+//	setGu();
 	
 // 방법3) 
 // trigger로 change 이벤트 호출
@@ -168,39 +184,131 @@ function makeCitySelect(data) {
 }
 
 function setGu(){
-	//'sido' : '대전'
 	var param = {
 			'sido' : $("#city").val()
 			,'flag' : 'GU'
-			};
+	};
 	
 	$.ajax({
-		url : "/JqueryPro/ZipServlet",
-		type : "post",
-		data : param,
-		dataType : "json",
-		success : function(data) {
-			console.log(data);
-	
+		url : "/JqueryPro/ZipServlet"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+//			console.log(data);
 			makeGugunSelect(data);
-	
+			
 		}
-	,error : function(xhr){
-		console.log(xhr);
-		alert("오류발생");
-	}
-	
+		,error : function(xhr){
+			console.log(xhr);
+			alert("오류");
+		}
 	});
+	
 }
 
-function makeGugunSelect(data) {
+function makeGugunSelect(data){
 	var strHtml = '<option value="">선택하세요</option>';
-	for (var i = 0; i < data.length; i++) {
-		strHtml += '<option value="' + data[i].gugun + '">' + data[i].gugun + '</option>';
+	for(var i=0 ; i<data.length ; i++){
+		strHtml += '<option value="' + data[i].gugun +'">' + data[i].gugun + '</option>';
 	}
-	$("#gu").html(strHtml); 
-	$("#gu").prop("disabled", false); 
+	$("#gu").html(strHtml);
+	$("#gu").prop("disabled", false);
 }
+
+function setDong(){
+	var param = {
+			'sido' : $("#city").val()
+			,'gugun' : $("#gu").val()
+			,'flag' : 'DONG'
+	};
+	
+	$.ajax({
+		url : "/JqueryPro/ZipServlet"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+//			console.log(data);
+			makeDongSelect(data);
+			
+		}
+		,error : function(xhr){
+			console.log(xhr);
+			alert("오류");
+		}
+	});
+	
+}
+function makeDongSelect(data){
+	var strHtml = '<option value="">선택하세요</option>';
+	for(var i=0 ; i<data.length ; i++){
+		strHtml += '<option value="' + data[i].dong +'">' + data[i].dong + '</option>';
+	}
+	$("#dong").html(strHtml);
+	$("#dong").prop("disabled", false);
+}
+
+function searchZipCode(){
+	var sido = $("#city").val();
+	var gu = $("#gu").val();
+	var dong= $("#dong").val();
+	
+	if(isEmpty(sido) || isEmpty(gu) || isEmpty(dong)) {
+		alert("시, 구, 동을 선택하고 검색 버튼을 누르세요.");
+		return;
+	}
+	
+	var param = {
+			'sido' : sido
+			,'gugun' : gu
+			,'dong' : dong
+	};
+	
+	$.ajax({
+		url : "/JqueryPro/ZipServlet"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+//			console.log(data);
+			makeZipTable(data);
+		}
+		,error : function(xhr){
+			console.log(xhr);
+			alert("오류");
+		}
+	});
+	
+}
+function makeZipTable(data){
+	$("#divZipResult").show();
+	$("#tbZipResult tbody").empty();
+	
+	var strHtml = "";
+	for(var i=0 ; i<data.length ; i++) {
+		console.log(data[i]);
+		//          <tr onclick='fntest( "300-801", "대전", "중구", "문화1동", "1번지" );'>
+//		strHtml += "<tr onclick='fntest( \"" + data[i].zipcode + "\", \"" + data[i].sido + "\");'>" // "300-801"
+		strHtml += "<tr>"
+				+ "<td>" + data[i].zipcode + "</td>"
+				+ "<td>" + data[i].sido + " "
+				+ data[i].gugun + " "
+				+ data[i].dong + " " 
+				+ changeEmptyVal(data[i].bunji) + "</td>"
+				+ "</tr>";
+	}
+	
+	$("#tbZipResult tbody").html(strHtml);
+	
+//	$("#tbZipResult tbody").dblclick();
+	
+}
+
+function changeEmptyVal(val) {
+	   if(isEmpty(val)) return "";
+	   else return val;
+	}
 
 function checkId(){
 	var userId = $("#userID").val();
@@ -250,7 +358,71 @@ function checkId(){
 		,error : function(xhr){
 			console.log(xhr);
 		}
-		});
-	}
+	});
+}
 
-});
+function openZip(){
+	//시 셀렉트박스 조회하고 초기화
+	initCitySelect();
+	//테이블 초기화
+	$("#tbZipResult tbody").empty();
+	
+	//주소창(모달창) 열기 - 부트스트랩의 modal 메소드 호출 
+	$("#zipModal").modal();
+}
+
+//회원정보 저장하기
+function save(){
+	
+	//회원정보 유효성 체크
+	var result = validate();
+	
+	if(!result){
+		return;
+	}
+	
+	//사용자에게 저장하기 전에 다시 물어본다.
+	 if(confirm("저장하시겠습니까?"))
+		 return; 
+	 
+	 //DB에 저장하는 ajax 호출
+	 $("#formFlag").val("C");
+	 $.ajax({
+		url : "",
+		type : "post",
+		data: $("#fm").serialize(),
+		datatype : "json",
+		success: function(data){
+			alert("저장되었습니다.");
+			
+			//페이지 이동
+//			changePage();
+			
+		},
+		error: function(xhr){
+			alert("실패하였습니다. \n 관리자에게 문의하세요.");
+			console.log(xhr);
+		}
+		
+	 });
+}
+
+function changePage(){
+	//방법1
+//	window.location.href = "/JqueryPro/html/member/memberList2.html";
+	
+	//방법2
+	var fm = document.getElementById("fm");
+	fm.action = "/JqueryPro/html/member/memberList2.html"; // 서블릿을 호출하기도 함.
+	fm.method = "post";
+	fm.submit();
+	
+}
+
+function validate(){
+	//....
+	return false; //문제가 생기면 중간에 return false;
+	
+	//체크가 끝나면
+	return true;
+}
